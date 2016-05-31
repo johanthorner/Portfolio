@@ -1,0 +1,32 @@
+﻿@using System.Web.Mvc.Ajax
+@model Presentation.Models.Post
+<div class="projectInfoDiv">
+    
+    <p>@Model.Text</p>
+
+    <p>
+        @Ajax.ActionLink(
+
+                            linkText: "Result",
+                            actionName: "redirectToPage",
+                            routeValues: new { url = @Model.Link },
+                            ajaxOptions: new AjaxOptions
+                            {
+                                UpdateTargetId = "ProjektInfoDiv",
+                                InsertionMode = InsertionMode.Replace
+                            }
+                          )
+
+        @Ajax.ActionLink(
+
+                            linkText: "Github",
+                            actionName: "redirectToPage",
+                            routeValues: new { url = @Model.GithubLink },
+                            ajaxOptions: new AjaxOptions
+                            {
+                                UpdateTargetId = "ProjektInfoDiv",
+                                InsertionMode = InsertionMode.Replace
+                            }
+                          )
+    </p>
+</div>

@@ -1,36 +1,36 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@model List<Presentation.Models.Post>
 <div class="jumbotron">
     <h1>Johan Thörner</h1>
     <p class="lead"></p>
 </div>
-
 <div class="row">
-    <div class="col-md-3">
-        <div class="textBoxar">
-            <h2>MVC</h2>
-            <p>Projekt i Mvc kommer snart...</p>
-        </div>
-       
-    </div>
-    <div class="col-md-3">
-        <div class="textBoxar">
-            <h2>Javascript</h2>
-            <p>Kommer snart..</p>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="textBoxar">
-            <h2>SharePoint</h2>
-            <p>kommer snart...</p>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="textBoxar">
-            <h2>HTML5</h2>
-            <p>kommer snart...</p>
-        </div>
-    </div>
+    @foreach (var post in Model)
+    {
+        if (post.IsVisible)
+        {
+            <div class="col-md-3">
+                <div class="textBoxar">
+                    <h2>
+                        @Ajax.ActionLink(
+                            linkText: post.Title,
+                            actionName: "projektInfo",
+                            routeValues: new { ID = post.PostID },
+                            ajaxOptions: new AjaxOptions
+                            {
+                                UpdateTargetId = "ProjektInfoDiv",
+                                InsertionMode = InsertionMode.Replace
+                            })
+                    </h2>
+
+                </div>
+                
+            </div>
+           
+        }
+    }
+
 </div>
+<div id="ProjektInfoDiv"></div>

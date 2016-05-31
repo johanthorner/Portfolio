@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Presentation.Models.Post>
+
+@{
+    ViewBag.Title = "PostAsButtonsList";
+}
+
+<h2>PostAsButtonsList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PostID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PostID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PostID })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="textBoxar">
+            <h2>MVC</h2>
+            <p>Projekt i Mvc kommer snart...</p>
+        </div>
+
+    </div>
+    <div class="col-md-3">
+        <div class="textBoxar">
+            <h2>Javascript</h2>
+            <p>Kommer snart..</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="textBoxar">
+            <h2>SharePoint</h2>
+            <p>kommer snart...</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="textBoxar">
+            <h2>HTML5</h2>
+            <p>kommer snart...</p>
+        </div>
+    </div>
+</div>

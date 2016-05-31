@@ -25,7 +25,7 @@ textarea {
 .navbar-inverse { background-color: #e6ffff !important; }
 
 .jumbotron {
-    background-image: url('../images/IMG_2519.JPG');
+   
     background-position: 0% 25%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -34,15 +34,21 @@ textarea {
     min-height: 400px;
 }
 
-.textBoxar {
-    background-color: lightgoldenrodyellow;
+.projectInfoDiv {
+   
+    margin-top: 25px;
+    font-size: 21px;
+    -webkit-animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -ms-animation: fadein 2s;
+    -o-animation: fadein 2s;
+    animation: fadein 2s;
 }
-.textBoxar p :hover {
-    background-color: lightblue;
+.projectInfoDiv p {
+    text-align: center;
 }
 
-
-.textBoxar p h1 {
+.textBoxar h1 {
     margin-top: 25px;
     font-size: 21px;
     
