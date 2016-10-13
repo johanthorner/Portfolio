@@ -33,7 +33,17 @@ namespace cloudnine.Models.Pages
             Description = "Place Case presnetations here.",
             GroupName = SystemTabNames.Content,
             Order = 2)]
-        public virtual ContentArea Blogs { get; set; }
+        public virtual ContentArea Cases { get; set; }
+
+
+        [CultureSpecific]
+        [Display(
+            Name = "Customers text",
+            Description = "Sidans titel",
+            GroupName = SystemTabNames.Content,
+            Order = 1)]
+        public virtual string customersText { get; set; }
+
 
         [CultureSpecific]
         [Display(
@@ -42,6 +52,14 @@ namespace cloudnine.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 2)]
         public virtual ContentArea Customers { get; set; }
+
+        [CultureSpecific]
+        [Display(
+         Name = "Contact form",
+         Description = "Place Contact form block here.",
+         GroupName = SystemTabNames.Content,
+         Order = 2)]
+        public virtual ContentArea ContactFormArea { get; set; }
 
     }
 }

@@ -230,15 +230,19 @@
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BloggsController.cs" />
+    <Compile Include="Controllers\ContactMeFormController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\PostFormController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ViewHelpers.cs" />
+    <Compile Include="Models\Blocks\ContactMeForm.cs" />
+    <Compile Include="Models\Blocks\FormData.cs" />
     <Compile Include="Models\Pages\About.cs" />
     <Compile Include="Models\Pages\Bloggs.cs" />
     <Compile Include="Models\Pages\Contacts.cs" />
@@ -251,10 +255,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
-    <Folder Include="Models\Blocks\" />
     <Folder Include="Models\Media\" />
     <Folder Include="Models\Properties\" />
     <Folder Include="Static\" />
+    <Folder Include="Views\PostForm\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -275,6 +279,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -297,6 +303,7 @@
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Bloggs\Index.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\ContactMeForm\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
