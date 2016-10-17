@@ -9,18 +9,24 @@ namespace cloudnine.Controllers
 {
     public class PostFormController : Controller
     {
-        // GET: PostForm
-      [HttpGet]
-        public ActionResult ManageForm()
-      {
-        
-          return View(new cloudnine.Models.Blocks.FormData());
-      }
-        [HttpPost]
-        public ActionResult ManageForm(FormData formData)
-        {
 
-            return View();
+        [HttpGet]
+        public string ManageForm()
+        {
+            return "Skickat";
+        }
+
+        [HttpPost]
+        public string ManageForm(string sureName, string lastName, string phoneNumber, string email)
+        {
+           
+            FormData newFormData = new FormData() { SureNameData = sureName, LastNameData = lastName, Email = email, PhoneNumber = phoneNumber };
+            Session["contactMe"] = newFormData;
+
+            FormData form = (FormData)Session["contactMe"];
+
+            return "Skickat till: " + form.Email;
+
         }
     }
 }

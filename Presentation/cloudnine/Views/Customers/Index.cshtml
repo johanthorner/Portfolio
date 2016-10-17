@@ -1,0 +1,9 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model cloudnine.Models.Blocks.Customers
+
+<div class="block">
+    @Html.PropertyFor(m => m.MainBody)
+    @Html.PropertyFor(i => i.CustomersArea)
+</div>

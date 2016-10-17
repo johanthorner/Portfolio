@@ -21,37 +21,19 @@ namespace cloudnine.Models.Pages
 
         [CultureSpecific]
         [Display(
-            Name = "Presentation Cases",
-            Description = "A Short text about the cases.",
-            GroupName = SystemTabNames.Content,
-            Order = 1)]
-        public virtual XhtmlString MainBody { get; set; }
-
-        [CultureSpecific]
-        [Display(
             Name = "Cases",
             Description = "Place Case presnetations here.",
             GroupName = SystemTabNames.Content,
             Order = 2)]
-        public virtual ContentArea Cases { get; set; }
-
-
-        [CultureSpecific]
-        [Display(
-            Name = "Customers text",
-            Description = "Sidans titel",
-            GroupName = SystemTabNames.Content,
-            Order = 1)]
-        public virtual string customersText { get; set; }
-
-
+        public virtual ContentArea CasesBlockArea { get; set; }
+        
         [CultureSpecific]
         [Display(
             Name = "Customers",
             Description = "Customers",
             GroupName = SystemTabNames.Content,
             Order = 2)]
-        public virtual ContentArea Customers { get; set; }
+        public virtual ContentArea CustomersBlockArea { get; set; }
 
         [CultureSpecific]
         [Display(
