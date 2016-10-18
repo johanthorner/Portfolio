@@ -1,0 +1,38 @@
+﻿@model WebbShop1.Models.Product
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Model.ProductName</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <p>@Model.Description</p> 
+    </div>
+    <div class="col-md-6">
+        image
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @ViewBag.ManufacturerID
+    </div>
+    <div class="col-md-4">
+      @Model.ProductsInStock
+    </div>
+    <div class="col-md-4">
+        @Ajax.ActionLink(linkText: "Lägg i kundvagn",
+                    actionName: "AddToCart",
+                    controllerName: "Home",
+                    routeValues: new { ID = Model.ProductID },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "Cart",
+                        InsertionMode = InsertionMode.Replace
+                    })
+    </div>
+</div>
+
+

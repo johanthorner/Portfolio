@@ -1,0 +1,24 @@
+﻿@using System.Web.UI.WebControls
+@using WebbShop1.Controllers
+@model IEnumerable<WebbShop1.Models.SubCategory>
+
+
+
+
+@foreach (var item in Model)
+{
+    
+   @Ajax.ActionLink(   
+        linkText:item.SubCategoryName,
+        controllerName:"Home",
+        actionName: "PrintProducts",
+        routeValues: new {ID = item.SubCategoryId},
+        ajaxOptions: new AjaxOptions
+        {
+            UpdateTargetId = "productMenuDiv",
+            InsertionMode = InsertionMode.Replace
+        })
+    <br/>
+}
+
+

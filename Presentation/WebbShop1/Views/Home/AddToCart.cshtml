@@ -1,0 +1,12 @@
+﻿@model WebbShop1.Models.Order
+<h3>Your Order:</h3>
+<p>Order Id : @Model.OrderId</p>
+<p>Customer: @Model.Customer</p>
+@ViewBag.selectedProduct
+
+<ul>
+    @foreach (var item in Model.OrderItems)
+    {
+        <li>@item.OrderItemId @item.Product.ProductName @item.NumberOfProducts</li>
+    }
+</ul>

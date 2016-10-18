@@ -1,0 +1,16 @@
+﻿@model RaningCatsAndDogs.Models.Dog
+
+@{
+    ViewBag.Title = "title";
+    Layout = "About.cshtml";
+}
+
+<h2>title</h2>
+@Ajax.ActionLink(linkText:"Call An Action",
+    actionName:"Bark",
+    ajaxOptions: new AjaxOptions
+    {
+        UpdateTargetId = "ajaxtarget",
+        InsertionMode = InsertionMode.InsertAfter
+    })
+<div id="ajaxtarget"></div>

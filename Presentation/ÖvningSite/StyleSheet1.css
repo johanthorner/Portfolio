@@ -1,0 +1,45 @@
+﻿.menuWraper {
+  
+}
+.imageContainer div :hover {
+    transform: scale(1.02);
+}
+body button{
+    float: right;
+    display: block;
+   
+}
+@media (max-width: 1536px) {
+  body {
+    padding-right: 300px;
+  }
+}
+
+.container {
+    
+  
+    max-width: 100%;
+}
+.jumbotron {
+    height: 350px;
+   
+}
+
+.menuWraper {
+    position: fixed;
+}
+
+#image {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#text {
+  z-index: 100;
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  left: 150px;
+  top: 350px;
+}

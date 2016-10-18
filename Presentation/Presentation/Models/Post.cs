@@ -15,5 +15,7 @@ namespace Presentation.Models
         public bool IsVisible { get; set; }
         public string Link { get; set; }
         public string GithubLink { get; set; }
+        public string tagg { get; set; }
+
     }
 }

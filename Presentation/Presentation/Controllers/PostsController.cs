@@ -42,8 +42,11 @@ namespace Presentation.Controllers
         // GET: Posts/Create
         public ActionResult Create()
         {
+            List<string> taggList = new List<string>() {"HTML", "MVC", "JAVASCRIPT"};
             return View();
         }
+
+     
 
         // POST: Posts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
