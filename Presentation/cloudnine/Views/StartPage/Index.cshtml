@@ -1,0 +1,25 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model cloudnine.Models.Pages.StartPage
+
+
+<div>
+    @Html.PropertyFor(m => m.Header)
+</div>
+<div>
+    @Html.PropertyFor(m => m.CasesBlockArea)
+</div>
+<div>
+    @Html.PropertyFor(m => m.CustomersBlockArea)
+</div>
+<div>
+    @Html.PropertyFor(m => m.ContactFormArea)
+</div>
+
+
+@{
+//TODO: Nytt block för att lista uppdrag på startsidan
+//TODO: - CasesListBlock Egenskaper: Rubrik, Kort ingress-text, ContentReference-egenskap för att peka ut uppdrag-sidan (som har uppdragen som barn-sidor)
+
+}

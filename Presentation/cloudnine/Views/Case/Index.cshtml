@@ -1,0 +1,12 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model cloudnine.Models.Blocks.Case
+
+<div class="col-lg-@Html.PropertyFor(b => b.BootstrapColumns)">
+    <div class="caseBox">
+            @Html.PropertyFor(i => i.Name)
+    </div>
+</div>
+
+

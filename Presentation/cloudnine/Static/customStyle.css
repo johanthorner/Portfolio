@@ -1,0 +1,52 @@
+﻿body { background: white;
+}
+#formDiv input{
+    
+    margin: auto;
+    width: 60%;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+#formDiv form {
+    text-align: center;
+}
+h1 {
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+h2 {
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+h3 {
+    margin: auto;
+    width: 60%;
+    text-align: left;
+}
+p {
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+#formDiv #formSubmit {
+    width:30%;
+}
+.caseBox {
+    height: 300px;
+    margin-top: 30px;
+   
+}
+.caseBox {
+    background: aliceblue;
+}
+.block {
+    margin-top: 50px;
+   
+}
+.navbar-nav {
+    float: right;
+}
