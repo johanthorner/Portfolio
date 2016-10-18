@@ -6,8 +6,8 @@ using EPiServer.DataAnnotations;
 
 namespace cloudnine.Models.Blocks
 {
-    [ContentType(DisplayName = "Cases", GUID = "71a3d38f-7f75-4504-b82b-3a1540c08ea6", Description = "")]
-    public class Cases : BlockData
+    [ContentType(DisplayName = "EmployesBlock", GUID = "d0486957-72ed-4543-a14b-2a6934292e34", Description = "")]
+    public class Employes : BlockData
     {
 
         [CultureSpecific]
@@ -20,18 +20,11 @@ namespace cloudnine.Models.Blocks
 
         [CultureSpecific]
         [Display(
-       Name = "Text",
-       Description = "Text for cases",
+       Name = "Employes",
+       Description = "Place Employe here.",
        GroupName = SystemTabNames.Content,
        Order = 2)]
-        public virtual XhtmlString MainBody { get; set; }
+        public virtual ContentArea EmployesPhotoArea { get; set; }
 
-        [CultureSpecific]
-        [Display(
-         Name = "cases area",
-         Description = "Place case blocks here.",
-         GroupName = SystemTabNames.Content,
-         Order = 3)]
-        public virtual ContentArea CasesArea { get; set; }
     }
 }

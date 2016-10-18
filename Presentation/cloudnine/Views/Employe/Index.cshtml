@@ -1,0 +1,17 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model cloudnine.Models.Blocks.Employe
+
+<div>
+    <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+            @Html.PropertyFor(p => p.EmployePhoto)
+        </a>
+        <ul>
+            <li>@Html.PropertyFor(m => m.Name)</li>
+            <li>@Html.PropertyFor(t => t.Title)</li>
+        </ul>
+    </div>
+
+</div>

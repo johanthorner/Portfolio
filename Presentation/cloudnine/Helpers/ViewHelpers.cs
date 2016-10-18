@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using cloudnine.Models.Pages;
 using EPiServer;
 using EPiServer.Core;
@@ -17,5 +18,23 @@ namespace cloudnine.Helpers
             return contentLoader.GetChildren<SitePageData>(ContentReference.StartPage).ToList();
 
         }
+        public static List<SitePageData> GetAllCases(this HtmlHelper helper)
+        {
+            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            var startPage = contentLoader.Get<StartPage>(ContentReference.StartPage);
+            
+            return contentLoader.GetChildren<SitePageData>(startPage.CaseRoot).ToList();
+
+        }
+
+        public static List<SitePageData> GetSubMenuItems(SitePageData currentPage)
+        {
+          
+            var contentloader = ServiceLocator.Current.GetInstance<IContentLoader>();
+
+            //ContentReference reference = currentPage.ContentLink;
+            return contentloader.GetChildren<SitePageData>(currentPage.ContentLink).ToList();
+        }
+      
     }
 }

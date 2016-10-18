@@ -43,5 +43,13 @@ namespace cloudnine.Models.Pages
          Order = 2)]
         public virtual ContentArea ContactFormArea { get; set; }
 
+        [CultureSpecific]
+        [Display(
+         Name = "Case root",
+         Description = "",
+         GroupName = SystemTabNames.Content,
+         Order = 2)]
+        public virtual ContentReference CaseRoot { get; set; }
+
     }
 }

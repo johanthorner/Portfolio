@@ -231,11 +231,16 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BloggsController.cs" />
     <Compile Include="Controllers\CaseController.cs" />
+    <Compile Include="Controllers\CaseListController.cs" />
+    <Compile Include="Controllers\CasePageController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
+    <Compile Include="Controllers\CasesPageController.cs" />
     <Compile Include="Controllers\ContactMeFormController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeController.cs" />
+    <Compile Include="Controllers\EmployesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\PostFormController.cs" />
@@ -246,14 +251,19 @@
     </Compile>
     <Compile Include="Helpers\ViewHelpers.cs" />
     <Compile Include="Models\Blocks\Case.cs" />
+    <Compile Include="Models\Blocks\CaseList.cs" />
     <Compile Include="Models\Blocks\Cases.cs" />
     <Compile Include="Models\Blocks\ContactMeForm.cs" />
+    <Compile Include="Models\Blocks\Employe.cs" />
+    <Compile Include="Models\Blocks\Employes.cs" />
     <Compile Include="Models\Blocks\Customer.cs" />
     <Compile Include="Models\Blocks\Customers.cs" />
     <Compile Include="Models\Blocks\FormData.cs" />
     <Compile Include="Models\Media\DefaultMedia1.cs" />
     <Compile Include="Models\Pages\About.cs" />
     <Compile Include="Models\Pages\Bloggs.cs" />
+    <Compile Include="Models\Pages\CasePage.cs" />
+    <Compile Include="Models\Pages\CasesPage.cs" />
     <Compile Include="Models\Pages\Contacts.cs" />
     <Compile Include="Models\Pages\Events.cs" />
     <Compile Include="Models\Pages\Jobs.cs" />
@@ -314,8 +324,14 @@
     <Content Include="Views\ContactMeForm\Index.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\CasesPage\Index.cshtml" />
+    <Content Include="Views\CaseList\Index.cshtml" />
+    <Content Include="Views\CasePage\Index.cshtml" />
     <None Include="Views\Cases\Index.cshtml" />
     <Content Include="Views\Case\Index.cshtml" />
+    <Content Include="Views\Employes\Index.cshtml" />
+    <Content Include="Views\Employe.cshtml" />
+    <Content Include="Views\Employe\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

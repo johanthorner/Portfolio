@@ -1,8 +1,11 @@
-﻿@using EPiServer.Core
+﻿@using cloudnine.Helpers
+@using cloudnine.Models.Blocks
+@using EPiServer.Core
 @using EPiServer.Web.Mvc.Html
 
 @model cloudnine.Models.Blocks.Cases
 <div class="row">
+  
     <div class="block">
         <div>
             @Html.PropertyFor(m => m.Name)
@@ -10,8 +13,33 @@
         <div>
             @Html.PropertyFor(y => y.MainBody)
         </div>
-        <div>
-            @Html.PropertyFor(f => f.CasesArea)
-        </div>
+        
+        @foreach (var item in Html.GetAllCases())
+        {
+            <h1>@item.Name</h1>
+        }
+        @*@if (Model.CasesArea.Count > 0)
+            {
+                foreach (var block in Model.CasesArea.FilteredItems)
+                {
+
+                    var content = block.GetContent();
+                    var caseBlock = content as Case;
+
+                    <div class="row">
+                        @if (caseBlock.BootstrapColumns == 8)
+                        {
+                        <div class="col-lg-8">
+                            @Html.PropertyFor(x => caseBlock.Name)
+                            @Html.PropertyFor(x => caseBlock.CaseImageArea)
+                        </div>
+                        }
+                    </div>
+
+
+
+                @Html.PropertyFor(c => caseBlock.CaseImageArea);
+            }
+            }*@
     </div>
 </div>

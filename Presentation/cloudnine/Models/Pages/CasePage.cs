@@ -7,8 +7,8 @@ using EPiServer.SpecializedProperties;
 
 namespace cloudnine.Models.Pages
 {
-    [ContentType(DisplayName = "Contacts", GUID = "28057d75-ffd9-4192-a86f-6d828cd99be6", Description = "")]
-    public class Contacts : SitePageData
+    [ContentType(DisplayName = "CasePage", GUID = "e27944c6-8bb9-485b-8f92-cf4eada6edb7", Description = "")]
+    public class CasePage : SitePageData
     {
 
         [CultureSpecific]
@@ -19,12 +19,5 @@ namespace cloudnine.Models.Pages
             Order = 1)]
         public virtual XhtmlString MainBody { get; set; }
 
-        [CultureSpecific]
-        [Display(
-           Name = "Employes",
-           Description = "",
-           GroupName = SystemTabNames.Content,
-           Order = 2)]
-        public virtual ContentArea Employes { get; set; }
     }
 }
