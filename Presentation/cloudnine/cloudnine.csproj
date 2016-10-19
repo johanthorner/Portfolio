@@ -229,12 +229,15 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\BloggController.cs" />
+    <Compile Include="Controllers\BloggFeedController.cs" />
     <Compile Include="Controllers\BloggsController.cs" />
     <Compile Include="Controllers\CaseController.cs" />
     <Compile Include="Controllers\CaseListController.cs" />
     <Compile Include="Controllers\CasePageController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\CasesPageController.cs" />
+    <Compile Include="Controllers\CasesPresentationController.cs" />
     <Compile Include="Controllers\ContactMeFormController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -242,6 +245,8 @@
     <Compile Include="Controllers\EmployeController.cs" />
     <Compile Include="Controllers\EmployesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\JobbController.cs" />
+    <Compile Include="Controllers\JobbFeedController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\PostFormController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
@@ -250,22 +255,27 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ViewHelpers.cs" />
+    <Compile Include="Models\Blocks\BloggFeed.cs" />
     <Compile Include="Models\Blocks\Case.cs" />
     <Compile Include="Models\Blocks\CaseList.cs" />
     <Compile Include="Models\Blocks\Cases.cs" />
+    <Compile Include="Models\Blocks\CasesPresentation.cs" />
     <Compile Include="Models\Blocks\ContactMeForm.cs" />
     <Compile Include="Models\Blocks\Employe.cs" />
     <Compile Include="Models\Blocks\Employes.cs" />
     <Compile Include="Models\Blocks\Customer.cs" />
     <Compile Include="Models\Blocks\Customers.cs" />
     <Compile Include="Models\Blocks\FormData.cs" />
+    <Compile Include="Models\Blocks\JobbFeed.cs" />
     <Compile Include="Models\Media\DefaultMedia1.cs" />
     <Compile Include="Models\Pages\About.cs" />
+    <Compile Include="Models\Pages\Blogg.cs" />
     <Compile Include="Models\Pages\Bloggs.cs" />
     <Compile Include="Models\Pages\CasePage.cs" />
     <Compile Include="Models\Pages\CasesPage.cs" />
     <Compile Include="Models\Pages\Contacts.cs" />
     <Compile Include="Models\Pages\Events.cs" />
+    <Compile Include="Models\Pages\Jobb.cs" />
     <Compile Include="Models\Pages\Jobs.cs" />
     <Compile Include="Models\Pages\Services.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
@@ -327,11 +337,16 @@
     <Content Include="Views\CasesPage\Index.cshtml" />
     <Content Include="Views\CaseList\Index.cshtml" />
     <Content Include="Views\CasePage\Index.cshtml" />
+    <Content Include="Views\CasesPresentation\Index.cshtml" />
+    <Content Include="Views\Blogg\Index.cshtml" />
+    <Content Include="Views\BloggFeed\Index.cshtml" />
     <None Include="Views\Cases\Index.cshtml" />
     <Content Include="Views\Case\Index.cshtml" />
     <Content Include="Views\Employes\Index.cshtml" />
     <Content Include="Views\Employe.cshtml" />
     <Content Include="Views\Employe\Index.cshtml" />
+    <Content Include="Views\Jobb\Index.cshtml" />
+    <Content Include="Views\JobbFeed\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

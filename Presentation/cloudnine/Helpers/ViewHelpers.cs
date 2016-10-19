@@ -18,12 +18,29 @@ namespace cloudnine.Helpers
             return contentLoader.GetChildren<SitePageData>(ContentReference.StartPage).ToList();
 
         }
-        public static List<SitePageData> GetAllCases(this HtmlHelper helper)
+        public static List<CasePage> GetAllCases(this HtmlHelper helper)
         {
             var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
             var startPage = contentLoader.Get<StartPage>(ContentReference.StartPage);
             
-            return contentLoader.GetChildren<SitePageData>(startPage.CaseRoot).ToList();
+            return contentLoader.GetChildren<CasePage>(startPage.CaseRoot).ToList();
+
+        }
+        public static List<Blogg> GetAllBloggs(this HtmlHelper helper)
+        {
+            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            var startPage = contentLoader.Get<StartPage>(ContentReference.StartPage);
+
+            return contentLoader.GetChildren<Blogg>(startPage.BloggRoot).ToList();
+
+        }
+
+        public static List<Jobb> GetAllJobbs(this HtmlHelper helper)
+        {
+            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            var startPage = contentLoader.Get<StartPage>(ContentReference.StartPage);
+
+            return contentLoader.GetChildren<Jobb>(startPage.JobbRoot).ToList();
 
         }
 

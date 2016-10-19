@@ -1,0 +1,14 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model cloudnine.Models.Pages.Blogg
+
+<div>
+    @Html.PropertyFor(m => m.Image)
+</div>
+<div>
+    @Html.PropertyFor(m => m.Headline)
+</div>
+<div>
+    @Html.PropertyFor(m => m.MainText)
+</div>

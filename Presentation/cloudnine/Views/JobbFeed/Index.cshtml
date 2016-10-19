@@ -1,0 +1,20 @@
+﻿@using cloudnine.Helpers
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model cloudnine.Models.Blocks.JobbFeed
+<div>
+
+    @Html.PropertyFor(m => m.JobbFeedName)
+
+    <div class="col-lg-12">
+        <div class="previewBox">
+            @foreach (var item in Html.GetAllJobbs())
+            {
+                @item.HeadLine
+                @item.MainBody
+                <div class="customDivBtn"><a href="@Url.ContentUrl(item.ContentLink)"><p>Läs mer...</p></a></div>
+            }
+        </div>
+    </div>
+</div>

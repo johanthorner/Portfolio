@@ -13,11 +13,21 @@ namespace cloudnine.Models.Pages
 
         [CultureSpecific]
         [Display(
-            Name = "Main body",
-            Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
+            Name = "Text for blogg",
+            Description = "",
             GroupName = SystemTabNames.Content,
             Order = 1)]
         public virtual XhtmlString MainBody { get; set; }
+
+        [CultureSpecific]
+        [Display(
+            Name = "Content area for blogg feed",
+            Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
+            GroupName = SystemTabNames.Content,
+            Order = 2)]
+        public virtual ContentArea ContentAreaForBloggFreed { get; set; }
+
+     
 
     }
 }

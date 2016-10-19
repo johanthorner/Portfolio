@@ -19,5 +19,13 @@ namespace cloudnine.Models.Pages
             Order = 1)]
         public virtual XhtmlString MainBody { get; set; }
 
+
+        [CultureSpecific]
+        [Display(
+           Name = "Columns in Bootstrap",
+           Description = "Enter the number of collumns the case vil have on the cases page",
+           GroupName = SystemTabNames.Content,
+           Order = 2)]
+        public virtual int BootstrapColumns { get; set; }
     }
 }

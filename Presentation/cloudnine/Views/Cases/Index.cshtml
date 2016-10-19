@@ -13,33 +13,5 @@
         <div>
             @Html.PropertyFor(y => y.MainBody)
         </div>
-        
-        @foreach (var item in Html.GetAllCases())
-        {
-            <h1>@item.Name</h1>
-        }
-        @*@if (Model.CasesArea.Count > 0)
-            {
-                foreach (var block in Model.CasesArea.FilteredItems)
-                {
-
-                    var content = block.GetContent();
-                    var caseBlock = content as Case;
-
-                    <div class="row">
-                        @if (caseBlock.BootstrapColumns == 8)
-                        {
-                        <div class="col-lg-8">
-                            @Html.PropertyFor(x => caseBlock.Name)
-                            @Html.PropertyFor(x => caseBlock.CaseImageArea)
-                        </div>
-                        }
-                    </div>
-
-
-
-                @Html.PropertyFor(c => caseBlock.CaseImageArea);
-            }
-            }*@
     </div>
 </div>

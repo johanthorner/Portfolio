@@ -1,0 +1,23 @@
+﻿@using cloudnine.Helpers
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model cloudnine.Models.Blocks.BloggFeed
+
+<div>
+    
+    @foreach (var item in Html.GetAllBloggs())
+    {
+        <div class="col-lg-12">
+            <div class="bloggPreview">
+                <a href="@Url.ContentUrl(item.ContentLink)"><h1>@item.Name</h1></a>
+                <img src="@Url.ContentUrl(item.Image)" alt="" />
+                @{//TODO: gör en ingress.
+                    //var ingress = item.MainText
+                }
+                <p>@item.MainText</p>
+                <div class ="customDivBtn"><a href="@Url.ContentUrl(item.ContentLink)"><p>Läs mer...</p></a></div>
+            </div>
+        </div>
+    }
+</div>

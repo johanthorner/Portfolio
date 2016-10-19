@@ -6,12 +6,7 @@
 
 <div>
     @Html.PropertyFor(m => m.MainBody)
-    @{
-        foreach (var item in Html.GetMenuItems(Model.ContentLink))
-        {
-            <h1>@item.Name</h1>
-        }
-    }
+   
    
 </div>
 

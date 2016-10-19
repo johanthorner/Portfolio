@@ -51,5 +51,21 @@ namespace cloudnine.Models.Pages
          Order = 2)]
         public virtual ContentReference CaseRoot { get; set; }
 
+        [CultureSpecific]
+        [Display(
+        Name = "Blogg root",
+        Description = "",
+        GroupName = SystemTabNames.Content,
+        Order = 2)]
+        public virtual ContentReference BloggRoot { get; set; }
+
+        [CultureSpecific]
+        [Display(
+        Name = "Jobbs root",
+        Description = "",
+        GroupName = SystemTabNames.Content,
+        Order = 2)]
+        public virtual ContentReference JobbRoot { get; set; }
+
     }
 }

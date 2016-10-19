@@ -1,0 +1,25 @@
+﻿@using cloudnine.Helpers
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model cloudnine.Models.Blocks.CasesPresentation
+
+<div>
+    @Html.PropertyFor(m => m.CasePresentation)
+
+
+    <div class="row">
+       
+        @foreach (var item in Html.GetAllCases())
+        {
+            <div class="col-lg-@item.BootstrapColumns">
+                <div class="caseBox">
+                    <a href="@Url.ContentUrl(item.ContentLink)"><h1>@item.Name</h1></a>
+                </div>
+            </div>
+        }
+
+    </div>
+   
+
+</div>

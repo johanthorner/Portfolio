@@ -50,3 +50,19 @@ p {
 .navbar-nav {
     float: right;
 }
+ul {
+    list-style: none;
+}
+.navbar-nav>li>a {
+    color: black;
+}
+.customDivBtn {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    width:10%;
+}
+.previewBox .customDivBtn{
+    text-align: center;
+    margin: auto;
+}
