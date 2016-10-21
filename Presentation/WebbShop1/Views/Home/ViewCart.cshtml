@@ -1,0 +1,67 @@
+﻿@model WebbShop1.Models.Order
+@*@{
+    Layout = null;
+}*@
+<div id="Cart">
+    <h3>Your Order:</h3>
+    <p>Order Id : @Model.OrderId</p>
+    <p>Customer: @Model.Customer</p>
+
+    <ul>
+        @foreach (var item in Model.OrderItems)
+        {
+            <li>
+                @item.Product.ProductName
+                @item.Product.ProductID
+
+                @Ajax.ActionLink(linkText: "-",
+                    actionName: "AdjustNumberOfItemsRemove",
+                    controllerName: "Home",
+                    routeValues: new { ID = item.Product.ProductID},
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "bodyContent",
+                        InsertionMode = InsertionMode.ReplaceWith
+                    })
+                @item.NumberOfProducts
+                @Ajax.ActionLink(linkText: "+",
+                    actionName: "AdjustNumberOfItemsAdd",
+                    controllerName: "Home",
+                    routeValues: new { ID = item.Product.ProductID},
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "bodyContent",
+                        InsertionMode = InsertionMode.ReplaceWith
+                    })
+
+                @Ajax.ActionLink(linkText: "Remove from Cart",
+                    actionName: "RemoveFromCart",
+                    controllerName: "Home",
+                    routeValues: new { ID = item.OrderItemId },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "bodyContent",
+                        InsertionMode = InsertionMode.ReplaceWith
+                    })
+            </li>
+
+        }
+    </ul>
+    @Ajax.ActionLink(linkText: "Check out",
+                    actionName: "CheckOut",
+                    controllerName: "Home",
+                    routeValues: new { ID = Model.OrderId },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "Cart",
+                        InsertionMode = InsertionMode.Replace
+                    })
+</div>
+
+<div id="errorDiv">
+    @ViewBag.error
+</div>

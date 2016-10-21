@@ -17,20 +17,17 @@
                         @Ajax.ActionLink(
                             linkText: post.Title,
                             actionName: "projektInfo",
-                            routeValues: new { ID = post.PostID },
+                            routeValues: new {ID = post.PostID},
                             ajaxOptions: new AjaxOptions
                             {
                                 UpdateTargetId = "ProjektInfoDiv",
                                 InsertionMode = InsertionMode.Replace
                             })
                     </h2>
-
                 </div>
-                
             </div>
-           
         }
     }
-
 </div>
-<div id="ProjektInfoDiv"></div>
+
+    <div id="ProjektInfoDiv"></div>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using System.Net.Mime
+@using WebbShop1.Models
+@model List<WebbShop1.Models.Category>
+<div class="jumbotron">
+    <h1>Webshop </h1>
+    <p class="lead"></p>
+</div>
+
+
+<div class="row">
+    @foreach (var post in Model)
+    {
+
+        <div class="col-md-3">
+            <div class="mainMenuBox">
+                <h2>
+                    @Ajax.ActionLink(
+                            linkText: post.CategoryName,
+                            actionName: "SubCategoryMenu",
+                            routeValues: new { ID = post.CategoryId },
+                            ajaxOptions: new AjaxOptions
+                            {
+                                UpdateTargetId = "subMenu",
+                                InsertionMode = InsertionMode.Replace
+                            })
+                </h2>
+            </div>
+        </div>
+
+    }
+</div>
+<div class="row">
+    <div class="col-md-3" id="subMenu"></div>
+    <div class="col-md-9" id="productMenuDiv">
+       
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="Cart"></div>
+
+</div>
+

@@ -19,6 +19,7 @@ namespace Presentation.Controllers
         {
             List<Post> activePost = db.Posts.Where(a => a.PostID == id).ToList();
             Post post = activePost[0];
+           
             return PartialView(post);
         }
 

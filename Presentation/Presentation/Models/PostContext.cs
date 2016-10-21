@@ -26,7 +26,7 @@ namespace Presentation.Models
                 new Post() {PostID = 1, Text = "Ett projekt med html och css",Link = "http://dev15johtho.se/", GithubLink = "https://github.com/johanthorner", Title = "HTML5", IsVisible = true},
                 new Post() {PostID = 2, Text = "Lite text JAvaScript projektet",Link = "", Title = "JavaScript", IsVisible = true},
                 new Post() {PostID = 3, Text = "Lite text MVC projektet",Link = "", Title = "MVC", IsVisible = true},
-                new Post() {PostID = 4, Text = "Lite text SharePoint projektet",Link = "", Title = "SharePoint", IsVisible = true},
+                new Post() {PostID = 4, Text = "Lite text SharePoint projektet",Link = "", Title = "SharePoint", IsVisible = false},
                 new Post() {PostID = 5, Text = "Lite text om projektet",Link = "", Title = "New Post", IsVisible = false}
             };
             foreach (var post in posts)

@@ -1,0 +1,14 @@
+﻿@model WebbShop1.Models.Order
+
+<p>check out</p>
+@ViewBag.message
+@using (Ajax.BeginForm("enterAddress", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "bodyContent" }))
+{
+    @Html.TextBox("Name")
+    <input type="submit" value="Confirm address">
+    
+}
+
+@{
+    //TODO: gör address formulär.
+}

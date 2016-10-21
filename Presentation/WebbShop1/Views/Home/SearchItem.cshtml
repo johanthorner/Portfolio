@@ -1,0 +1,40 @@
+﻿@model System.Collections.Generic.List<WebbShop1.Models.Product>
+
+
+
+
+<h3>@ViewBag.selectedSubCategory</h3>
+@ViewBag.SearchInput <br/>
+@{
+
+    foreach (var item in Model)
+    {
+        @item.ProductID
+
+        @Ajax.ActionLink(
+                            linkText: item.ProductName,
+                            actionName: "ProductInfo",
+                            controllerName: "Home",
+                            routeValues: new { ID = item.ProductID },
+                            ajaxOptions: new AjaxOptions
+                            {
+                                UpdateTargetId = "productMenuDiv",
+                                InsertionMode = InsertionMode.Replace
+                            })
+        @Ajax.ActionLink(linkText: "Lägg i kundvagn",
+                            actionName: "AddToCart",
+                            controllerName: "Home",
+                            routeValues: new { ID = item.ProductID },
+                            ajaxOptions: new AjaxOptions
+                            {
+                                HttpMethod = "GET",
+                                UpdateTargetId = "Cart",
+                                InsertionMode = InsertionMode.Replace
+                            })
+        <br />
+    }
+}
+@{
+ 
+
+}

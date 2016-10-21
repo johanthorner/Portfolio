@@ -1,0 +1,6 @@
+﻿.navbar-collapse.collapse {
+    display: none!important;
+}
+.navbar-collapse.collapse.in{
+    display: block!important;
+}

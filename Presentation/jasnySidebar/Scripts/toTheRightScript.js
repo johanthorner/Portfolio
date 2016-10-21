@@ -1,0 +1,1 @@
+﻿$('.navmenu').offcanvas()
