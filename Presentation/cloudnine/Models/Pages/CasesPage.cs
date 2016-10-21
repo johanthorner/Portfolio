@@ -4,11 +4,12 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
+using EPiServer.Web;
 
 namespace cloudnine.Models.Pages
 {
-    [ContentType(DisplayName = "Cases", GUID = "519b8e25-4432-47fc-97e3-ab793dd77f07", Description = "")]
-    public class CasesPage : SitePageData
+    [ContentType(DisplayName = "CasesPage", GUID = "07302dd1-c342-4aa8-867f-4765a86baa59", Description = "")]
+    public class CasesPage : PageData
     {
 
         [CultureSpecific]
@@ -21,11 +22,21 @@ namespace cloudnine.Models.Pages
 
         [CultureSpecific]
         [Display(
-        Name = "Cases Area",
-        Description = "Customers",
-        GroupName = SystemTabNames.Content,
-        Order = 2)]
+            Name = "Cases Area",
+            Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
+            GroupName = SystemTabNames.Content,
+            Order = 1)]
         public virtual ContentArea CasesArea { get; set; }
 
+        [CultureSpecific]
+        [Display(
+            Name = "Image",
+            Description = "",
+            GroupName = SystemTabNames.Content,
+            Order = 1)]
+        [UIHint(UIHint.Image)]
+        public virtual XhtmlString Image { get; set; }
+
+     
     }
 }

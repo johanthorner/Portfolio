@@ -9,9 +9,9 @@ using cloudnine.Models.Pages;
 
 namespace cloudnine.Controllers
 {
-    public class CasesPageController : PageController<CasesPage>
+    public class CasesPageController : PageController<CasePage>
     {
-        public ActionResult Index(CasesPage currentPage)
+        public ActionResult Index(CasePage currentPage)
         {
             /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */

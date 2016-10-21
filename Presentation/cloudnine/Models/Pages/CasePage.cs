@@ -4,6 +4,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
+using EPiServer.Web;
 
 namespace cloudnine.Models.Pages
 {
@@ -27,5 +28,24 @@ namespace cloudnine.Models.Pages
            GroupName = SystemTabNames.Content,
            Order = 2)]
         public virtual int BootstrapColumns { get; set; }
+
+
+        [CultureSpecific]
+        [Display(
+          Name = "Image",
+          Description = "Place Image here.",
+          GroupName = SystemTabNames.Content,
+          Order = 2)]
+        [UIHint(UIHint.Image)]
+        public virtual ContentReference Image { get; set; }
+
+        [CultureSpecific]
+        [Display(
+         Name = "Case Presentation Image",
+         Description = "Place Image here.",
+         GroupName = SystemTabNames.Content,
+         Order = 2)]
+        [UIHint(UIHint.Image)]
+        public virtual ContentReference CasePresentationImage { get; set; }
     }
 }

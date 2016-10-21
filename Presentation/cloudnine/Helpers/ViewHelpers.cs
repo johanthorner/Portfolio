@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using cloudnine.Models.Pages;
 using EPiServer;
 using EPiServer.Core;
+using EPiServer.Filters;
 using EPiServer.ServiceLocation;
 
 namespace cloudnine.Helpers
@@ -15,7 +16,23 @@ namespace cloudnine.Helpers
         public static List<SitePageData> GetMenuItems()
         {
             var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-            return contentLoader.GetChildren<SitePageData>(ContentReference.StartPage).ToList();
+            var toppLevelPages = contentLoader.GetChildren<SitePageData>(ContentReference.StartPage).ToList();
+
+            var rootLink = contentLoader.Get<SitePageData>(ContentReference.StartPage);
+
+            toppLevelPages = FilterForVisitor.Filter(toppLevelPages).OfType<SitePageData>().Where(x => x.VisibleInMenu).ToList();
+
+            toppLevelPages.Insert(0, rootLink);
+            return toppLevelPages;
+
+        }
+
+        public static SitePageData GetRootLink()
+        {
+            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            var rootLink = contentLoader.Get<SitePageData>(ContentReference.StartPage);
+           
+            return rootLink;
 
         }
         public static List<CasePage> GetAllCases(this HtmlHelper helper)

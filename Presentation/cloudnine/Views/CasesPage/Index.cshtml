@@ -2,12 +2,14 @@
 @using EPiServer.Core
 @using EPiServer.Web.Mvc.Html
 
-@model cloudnine.Models.Pages.CasesPage
+@model cloudnine.Models.Pages.CasePage
 
 <div>
     @Html.PropertyFor(m => m.MainBody)
 </div>
 <div>
-    @Html.PropertyFor(c => c.CasesArea)
+    <img src="@Html.PropertyFor(m => m.Image)"/>
 </div>
-  
+<div>
+   
+</div>
