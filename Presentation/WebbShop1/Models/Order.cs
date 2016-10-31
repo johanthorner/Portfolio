@@ -11,5 +11,15 @@ namespace WebbShop1.Models
         public Customer Customer { get; set; }
         
         public virtual List<OrderItem> OrderItems  { get; set; }
+
+        public int GetNumberOfItems()
+        {
+            int numberOfProductsTotal = 0;
+            foreach (var item in OrderItems)
+            {
+                numberOfProductsTotal += item.NumberOfProducts;
+            }
+            return numberOfProductsTotal;
+        }
     }
 }

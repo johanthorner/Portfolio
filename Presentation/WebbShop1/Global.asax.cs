@@ -13,8 +13,6 @@ namespace WebbShop1
     {
         protected void Application_Start()
         {
-            
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -24,8 +22,6 @@ namespace WebbShop1
         protected void Session_Start(Object sender, EventArgs e)
         {
             
-            
-       
         }
     }
 }

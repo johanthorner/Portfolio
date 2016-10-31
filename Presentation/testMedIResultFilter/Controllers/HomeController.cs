@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace testMedIResultFilter.Controllers
+{
+    public class HomeController : Controller
+    {
+        [CustomActionAttribute]
+        [CustomResultAttribute]
+        public ActionResult Index()
+        {
+            
+            return View();
+        }
+    }
+
+}
+
+public class CustomActionAttribute : FilterAttribute, IActionFilter
+{
+    void IActionFilter.OnActionExecuted(ActionExecutedContext filterContext)
+    {
+        filterContext.Controller.ViewBag.OnActionExecuted = "IActionFilter.OnActionExecuted filter called";
+    }
+
+    void IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
+    {
+        filterContext.Controller.ViewBag.OnActionExecuting = "IActionFilter.OnActionExecuting filter called";
+    }
+}
+
+public class CustomResultAttribute : FilterAttribute, IResultFilter
+{
+    void IResultFilter.OnResultExecuted(ResultExecutedContext filterContext)
+    {
+        filterContext.Controller.ViewBag.OnResultExecuted = "IResultFilter.OnResultExecuted filter called";
+    }
+
+    void IResultFilter.OnResultExecuting(ResultExecutingContext filterContext)
+    {
+        filterContext.Controller.ViewBag.OnResultExecuting = "IResultFilter.OnResultExecuting filter called";
+    }
+}

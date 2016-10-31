@@ -6,7 +6,7 @@
     <h3>Your Order:</h3>
     <p>Order Id : @Model.OrderId</p>
     <p>Customer: @Model.Customer</p>
-
+    <p>Number of Items: @Model.GetNumberOfItems()</p>
     <ul>
         @foreach (var item in Model.OrderItems)
         {

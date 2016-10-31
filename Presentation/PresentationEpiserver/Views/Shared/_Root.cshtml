@@ -1,0 +1,49 @@
+﻿@using PresentationEpiserver.Helpers
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+ 
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/jasny-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/customStyle.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="navmenu navmenu-default navmenu-fixed-left oncanvas">
+        <a class="navmenu-brand" href="#">Project name</a>
+        <ul class="nav navmenu-nav">
+            @foreach (var item in Html.GetSubMenuItems())
+            {
+                    <a href="@Url.ContentUrl(item.ContentLink)"><p>@item.Name</p></a>
+            }
+           
+        </ul>
+    </div>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div class="container">
+        @RenderBody()    
+    </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jasny-bootstrap.min.js"></script>
+</body>
+</html>
