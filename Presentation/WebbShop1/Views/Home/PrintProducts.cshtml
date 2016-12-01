@@ -12,63 +12,62 @@
 
     foreach (var item in Model)
     {
-        <div class="row">
+        <div class="productInfoRow">
+            <div class="row">
 
-            <div class="col-md-3">
-                @item.ProductID
+                <div class="col-md-3">
+                    @item.ProductID
 
-                @Ajax.ActionLink(
+                    @Ajax.ActionLink(
                     linkText: item.ProductName,
                     actionName: "ProductInfo",
                     controllerName: "Home",
-                    routeValues: new {ID = item.ProductID},
+                    routeValues: new { ID = item.ProductID },
                     ajaxOptions: new AjaxOptions
                     {
                         UpdateTargetId = "productMenuDiv",
                         InsertionMode = InsertionMode.Replace
                     })
-            </div>
+                </div>
 
-            <div class="col-md-2">
-
-
-
-                @if (item.OngoingCampain)
+                <div class="col-md-2">
+                    @if (item.OngoingCampain)
                 {
-                    <div class="PriceDiv"><del>@item.Price</del> Now : @item.CampainPrice</div>
-                }
-                else
-                {
-                    <div class="PriceDiv">
-                        @item.Price
-                    </div>
-                }
-            </div>
+                        <div class="PriceDiv"><del>@item.Price</del> Now : @item.CampainPrice</div>
+                    }
+                    else
+                    {
+                        <div class="PriceDiv">
+                            @item.Price
+                        </div>
+                    }
+                </div>
 
-            <div class="col-md-1">
-                 @item.ProductsInStock left
-            </div>
+                <div class="col-md-1">
+                    @item.ProductsInStock left
+                </div>
 
-            <div class="col-md-3">
-                <p></p>
-            </div>
+                <div class="col-md-3">
+                    <p></p>
+                </div>
 
 
-            <div class="col-md-3">
-                @Ajax.ActionLink(linkText: "Lägg i kundvagn",
+                <div class="col-md-3">
+                    @Ajax.ActionLink(linkText: "Lägg i kundvagn",
                     actionName: "AddToCart",
                     controllerName: "Home",
-                    routeValues: new {ID = item.ProductID},
+                    routeValues: new { ID = item.ProductID },
                     ajaxOptions: new AjaxOptions
                     {
                         HttpMethod = "GET",
                         UpdateTargetId = "Cart",
                         InsertionMode = InsertionMode.Replace
-                    })
+                    },
+                    htmlAttributes: new { @class = "addItemToCart" }
+                    )
+                </div>
             </div>
-
         </div>
-
     }
 }
 

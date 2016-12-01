@@ -1,6 +1,74 @@
 ﻿@media (min-width: 992px) {
   body {
-    padding-top: 300px;
-    padding-left: 300px;
+    padding-top: 100px;
   }
+}
+
+.contentBox {
+    padding-bottom: 300px;
+}
+body {
+    height:100%
+}
+
+body .footer {
+     margin-top: calc(100% + 300px);
+     background: black !important;
+     position: absolute;
+     height: 300px;
+     right: 0;
+     left: 0;
+     bottom: 0%;
+     background-color: #efefef;
+     text-align: center;
+
+}
+.footer p {
+    text-align: left;
+    padding-top: 30px;
+    color: white;
+
+}
+.footer a {
+    text-align: left;
+    padding-top: 30px;
+    color: rgb(246, 104, 40);
+
+}
+.footer img {
+    padding-right: 30px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.col-md-3 .caseBox {
+    background-color: grey;
+}
+.centerContent{
+    padding-bottom: 300px;
+}
+.caseImage {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+
+.casePresentaiton h4 { 
+   position: absolute; 
+   top: 300px; 
+   left: -20px; 
+   width: 100%; 
+}
+
+.regular {
+   text-align: left;
+    line-height: 2.8;
+}
+
+p {
+    text-align: left;
+}
+.cases p {
+    text-align: center;
 }

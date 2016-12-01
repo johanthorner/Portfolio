@@ -228,13 +228,45 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Classes\ImageFile.cs" />
+    <Compile Include="Classes\NumberOfCollumns.cs" />
+    <Compile Include="Classes\ViewHelpers.cs" />
+    <Compile Include="Controllers\BasePageController.cs" />
+    <Compile Include="Controllers\CasePageController.cs" />
+    <Compile Include="Controllers\CasesController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomersBlockController.cs" />
+    <Compile Include="Controllers\FourColumnArticleController.cs" />
+    <Compile Include="Controllers\FullColumnArticleController.cs" />
+    <Compile Include="Controllers\MainCategoryBlockController.cs" />
     <Compile Include="Controllers\PresentationController.cs" />
+    <Compile Include="Controllers\ShopBlockController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
+    <Compile Include="Controllers\SubCategoryBlockController.cs" />
+    <Compile Include="Controllers\TextBlockBigController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Groups\GroupNames.cs" />
     <Compile Include="Helpers\ViewHelpers.cs" />
+    <Compile Include="Models\Blocks\Cases.cs" />
+    <Compile Include="Models\Blocks\CasesBlock.cs" />
+    <Compile Include="Models\Blocks\Customer.cs" />
+    <Compile Include="Models\Blocks\CustomersBlock.cs" />
+    <Compile Include="Models\Blocks\FourColumnArticle.cs" />
+    <Compile Include="Models\Blocks\FullColumnArticleBlock.cs" />
+    <Compile Include="Models\Blocks\Product.cs" />
+    <Compile Include="Models\Blocks\SelectMainCategory.cs" />
+    <Compile Include="Models\Blocks\SelectMainCategoryEditorSelector.cs" />
+    <Compile Include="Models\Blocks\MainCategoryBlock.cs" />
+    <Compile Include="Models\Blocks\SelectSubCategory.cs" />
+    <Compile Include="Models\Blocks\SelectSubCategoryEditorSelector.cs" />
+    <Compile Include="Models\Blocks\ShopBlock.cs" />
+    <Compile Include="Models\Blocks\SubCategoryBlock.cs" />
+    <Compile Include="Models\Blocks\SubmitContactInformationBlock.cs" />
+    <Compile Include="Models\Blocks\TextBlockBig.cs" />
     <Compile Include="Models\Pages\BasePage.cs" />
+    <Compile Include="Models\Pages\CasePage.cs" />
     <Compile Include="Models\Pages\Presentation.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
@@ -242,7 +274,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
-    <Folder Include="Models\Blocks\" />
     <Folder Include="Models\Media\" />
     <Folder Include="Models\Properties\" />
     <Folder Include="Static\" />
@@ -253,8 +284,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\customStyle.css" />
-    <Content Include="Content\jasny-bootstrap.css" />
-    <Content Include="Content\jasny-bootstrap.min.css" />
+    <Content Include="Content\Images\socialMediaLogos\facebook.png" />
+    <Content Include="Content\Images\socialMediaLogos\instagram.png" />
+    <Content Include="Content\Images\socialMediaLogos\linkedin.png" />
+    <Content Include="Content\Images\socialMediaLogos\twitter.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -264,14 +297,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\jasny-bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jasny-bootstrap.js" />
-    <Content Include="Scripts\jasny-bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\mainMenu.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -290,6 +321,18 @@
     <Content Include="Views\Shared\_Root.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\BasePage\Index.cshtml" />
+    <Content Include="Views\ShopBlock\Index.cshtml" />
+    <Content Include="Views\MainCategoryBlock\Index.cshtml" />
+    <Content Include="Views\SubCategoryBlock\Index.cshtml" />
+    <Content Include="Views\CustomersBlock\Index.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Image.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\TextBlockBig\Index.cshtml" />
+    <Content Include="Views\CasePage\Index.cshtml" />
+    <Content Include="Views\Cases\Index.cshtml" />
+    <Content Include="Views\FullColumnArticle\Index.cshtml" />
+    <Content Include="Views\FourColumnArticle\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

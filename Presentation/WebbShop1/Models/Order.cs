@@ -14,12 +14,12 @@ namespace WebbShop1.Models
 
         public int GetNumberOfItems()
         {
-            int numberOfProductsTotal = 0;
+            int totalNumberOfProducts = 0;
             foreach (var item in OrderItems)
             {
-                numberOfProductsTotal += item.NumberOfProducts;
+                totalNumberOfProducts += item.NumberOfProducts;
             }
-            return numberOfProductsTotal;
+            return totalNumberOfProducts;
         }
     }
 }

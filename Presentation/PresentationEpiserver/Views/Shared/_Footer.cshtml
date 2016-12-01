@@ -1,0 +1,69 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.ServiceLocation
+@using PresentationEpiserver.Models.Pages
+@{
+    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+    var startPage = contentLoader.Get<PresentationEpiserver.Models.Pages.StartPage>(ContentReference.StartPage);
+}
+
+<footer class ="footer">
+    <div class="row">
+        <div class="col-md-2">
+            <p></p>
+        </div>
+        <div class="col-md-2">
+            <p>
+                @Html.PropertyFor(m => startPage.Address)
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p>
+               @Html.PropertyFor(m => startPage.Mail)
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p>
+              @Html.PropertyFor(m => startPage.Contact)
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p>
+                @Html.PropertyFor(m => startPage.AdditionalInfo)
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p></p>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="socialMediaLogos">
+            @if (Html.PropertyFor(m => startPage.TwitterLink) != null)
+            {
+                <a href="@Html.PropertyFor(m => startPage.TwitterLink)"><img src="/Content/Images/socialMediaLogos/twitter.png" alt="Twitter logo" /></a>
+            }
+            @if (Html.PropertyFor(m => startPage.FacebookLink) != null)
+            {
+                <a href="@Html.PropertyFor(m => startPage.FacebookLink)"><img src="/Content/Images/socialMediaLogos/facebook.png" alt="Facebook logo" /></a>
+            }
+            @if (Html.PropertyFor(m => startPage.LinkedInLink) != null)
+            {
+                <a href="@Html.PropertyFor(m => startPage.LinkedInLink)"><img src="/Content/Images/socialMediaLogos/linkedin.png" alt="LikedIn logo" /></a>
+            }
+            @if (Html.PropertyFor(m => startPage.InstagramLink) != null)
+            {
+                <a href="@Html.PropertyFor(m => startPage.InstagramLink)"><img src="/Content/Images/socialMediaLogos/instagram.png" alt="Instagram logo" /></a>
+            }
+        </div>
+    </div>
+    <div class="col-md-2">
+        <p></p>
+    </div>
+    <div class="col-md-8">
+        <p>
+            Vi använder kakor (@Html.PageLink("Cookies", startPage.Legal)) för att förbättra din upplevelse av vår webbplats. Genom att surfa vidare accepterar du dessa kakor.
+        </p>
+    </div>
+    
+</footer>

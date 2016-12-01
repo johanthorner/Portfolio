@@ -15,7 +15,7 @@ namespace PresentationEpiserver.Models.Pages
            Name = "Page title",
            Description = "",
            GroupName = SystemTabNames.Content,
-           Order = 1)]
+           Order = 10)]
         public virtual string PageTitle { get; set; }
 
         [CultureSpecific]
@@ -23,8 +23,8 @@ namespace PresentationEpiserver.Models.Pages
             Name = "Place page blocks here.",
             Description = "",
             GroupName = SystemTabNames.Content,
-            Order = 1)]
+            Order = 20)]
         public virtual ContentArea PageContent { get; set; }
-
+      
     }
 }

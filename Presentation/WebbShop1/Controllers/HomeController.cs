@@ -8,33 +8,40 @@ using WebbShop1.Models;
 
 namespace WebbShop1.Controllers
 {
-    
+    [LogActionFilter]
+
     public class HomeController : Controller
     {
         private ProductContext db = new ProductContext();
 
-        [CustomActionAttribute]
         public ActionResult Index()
         {
 
             List<Category> CategoryList = db.Categories.ToList();
             return View(CategoryList);
         }
-        [CustomActionAttribute]
+    
         public ActionResult About()
         {
             List<Product> activeProducts = db.Products.Where(p => p.ProductName.Contains("Volca")).ToList();
 
             return View(activeProducts);
         }
-        [CustomActionAttribute]
+
+        public int GetNumberOfProductsInCart()
+        {
+            int currentOrder = 1;
+            Order order = db.Orders.First(o => o.OrderId == currentOrder);
+            int numberOfProducts = order.GetNumberOfItems();
+            return numberOfProducts;
+        }
         public ActionResult Contact()
         {
           
             ViewBag.Message = "Your contact page.";
             return View();
         }
-        [CustomActionAttribute]
+      
         [HttpGet]
         public ActionResult ViewCart(bool? errorFromRedirect)
         {
@@ -49,7 +56,7 @@ namespace WebbShop1.Controllers
 
             return View(order);
         }
-        [CustomActionAttribute]
+       
         public ActionResult AdjustNumberOfItemsAdd(int id)
         {
             
@@ -69,7 +76,7 @@ namespace WebbShop1.Controllers
             return RedirectToAction("ViewCart", new { });
 
         }
-        [CustomActionAttribute]
+       
         public ActionResult AdjustNumberOfItemsRemove(int id)
         {
             try
@@ -102,7 +109,6 @@ namespace WebbShop1.Controllers
         }
 
         [HttpGet]
-        [CustomActionAttribute]
         public PartialViewResult checkOut()
         {
             int currentOrder = 1;
@@ -118,7 +124,6 @@ namespace WebbShop1.Controllers
         }
 
         [HttpGet]
-        [CustomActionAttribute]
         public PartialViewResult enterAddress()
         {
             int currentOrder = 1;
@@ -127,7 +132,6 @@ namespace WebbShop1.Controllers
         }
 
         [HttpGet]
-        [CustomActionAttribute]
         public ActionResult AddToCart(int id)
         {
             //call mvc via jquerry
@@ -152,7 +156,7 @@ namespace WebbShop1.Controllers
                     OrderItem newOrderItem = new OrderItem() { Product = selectedProduct, NumberOfProducts = 1 };
                     order.OrderItems.Add(newOrderItem);
                     db.SaveChanges();
-                    TempData["NumberOfItemsInBasket"] = order.OrderItems.Count;
+                    Session["NumberOfItemsInBasket"] = order.GetNumberOfItems();
                 }
                 else
                 {
@@ -170,7 +174,6 @@ namespace WebbShop1.Controllers
 
         }
         [HttpGet]
-        [CustomActionAttribute]
         public ActionResult SearchItem(string search)
         {
             List<Product> products = db.Products.Where(p => p.ProductName.Contains(search)).ToList();
@@ -190,7 +193,6 @@ namespace WebbShop1.Controllers
 
         }
         [HttpGet]
-        [CustomActionAttribute]
         public ActionResult RemoveFromCart(int id)
         {
 
@@ -202,6 +204,7 @@ namespace WebbShop1.Controllers
                 order.OrderItems.Remove(itemToRemove);
 
                 db.SaveChanges();
+                Session["NumberOfItemsInBasket"] = order.GetNumberOfItems();
                 return RedirectToAction("ViewCart", "Home", new { error = false });
             }
             catch (Exception)
@@ -213,14 +216,12 @@ namespace WebbShop1.Controllers
         }
 
         [HttpGet]
-        [CustomActionAttribute]
         public ActionResult SubCategoryMenu(int id)
         {
             List<SubCategory> activeSubCategory = db.SubCategories.ToList().Where(a => a.Category.CategoryId == id).ToList();
             return PartialView(activeSubCategory);
         }
         [HttpPost]
-        [CustomActionAttribute]
         public ActionResult SubCategoryMenu()
         {
             List<SubCategory> activeSubCategory = db.SubCategories.ToList().Where(a => a.Category.CategoryId == 1).ToList();
@@ -228,7 +229,6 @@ namespace WebbShop1.Controllers
         }
 
         [HttpGet]
-        [CustomActionAttribute]
         public PartialViewResult PrintProducts(int id)
         {
             ViewBag.id = id;
@@ -240,7 +240,6 @@ namespace WebbShop1.Controllers
 
 
         [HttpGet]
-        [CustomActionAttribute]
         public ActionResult ProductInfo(int id)
         {
 

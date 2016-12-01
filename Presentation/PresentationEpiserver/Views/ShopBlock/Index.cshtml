@@ -1,0 +1,52 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Data
+@using EPiServer.ServiceLocation
+@using EPiServer.Web.Mvc.Html
+@using PresentationEpiserver.Models.Blocks
+
+@model PresentationEpiserver.Models.Blocks.ShopBlock
+<div class="row">
+    @{
+        var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+        if (Model != null && Model.MainCategoryArea != null && Model.MainCategoryArea.Items.Any())
+        {
+            foreach (var contentItem in Model.MainCategoryArea.Items)
+            {
+                var item = contentLoader.Get<MainCategoryBlock>(contentItem.ContentLink);            // output necessary properties from content instance
+                <div id ="@item.Property.OwnerLink" class="col-md-2 mainMenuBox">
+                    @item.Name
+                    @item.Property.OwnerLink;
+                    
+                </div>
+            }
+        }
+    }
+</div>
+<br />
+@{
+    char[] delimiterChars = {'_'}; 
+}
+<div class="row">
+    <ul>
+        @{
+
+            if (Model != null && Model.SubCategoryArea != null && Model.SubCategoryArea.Items.Any())
+            {
+                foreach (var contentItem in Model.SubCategoryArea.Items)
+                {
+                    var item = contentLoader.Get<SubCategoryBlock>(contentItem.ContentLink);            // output necessary properties from content instance
+                    <div class="col-md-12">
+                        @{
+                            string[] words = item.mainCategory.Split(delimiterChars);
+                            <li class="@words[0]">@words[0] @item.Name.ToString()</li>
+                        }
+                       
+                    </div>
+                  }
+             }
+
+        }
+    </ul>
+</div>  
+

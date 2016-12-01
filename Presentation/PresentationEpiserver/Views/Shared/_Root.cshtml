@@ -1,14 +1,24 @@
-﻿@using PresentationEpiserver.Helpers
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.ServiceLocation
+@using PresentationEpiserver.Helpers
+@using EPiServer.Web.Mvc.Html
+
+@{
+    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+    var startPage = contentLoader.Get<PresentationEpiserver.Models.Pages.StartPage>(ContentReference.StartPage);
+}
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bootstrap 101 Template</title>
+    <title>Cloudnine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
- 
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/jasny-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/customStyle.css" rel="stylesheet" />
+    @*<link href="~/Content/jasny-bootstrap.min.css" rel="stylesheet" />*@
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -17,33 +27,39 @@
     <![endif]-->
 </head>
 <body>
-    <div class="navmenu navmenu-default navmenu-fixed-left oncanvas">
-        <a class="navmenu-brand" href="#">Project name</a>
-        <ul class="nav navmenu-nav">
-            @foreach (var item in Html.GetSubMenuItems())
-            {
-                    <a href="@Url.ContentUrl(item.ContentLink)"><p>@item.Name</p></a>
-            }
-           
-        </ul>
-    </div>
 
     <div class="navbar navbar-default navbar-fixed-top">
-        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
+        <nav class="navbar navbar-light bg-faded">
+            <div class="navbar-header">
+                <a href="@startPage.LinkURL">cloudnine°</a>
+            </div>
+            <ul class="nav navbar-nav">
+                @foreach (var item in Html.GetSubMenuItems())
+                {
+                    <li class="nav-item">
+                        @Html.ContentLink(item.ContentLink)
+                    </li>
+                }
+            </ul>
+        </nav>
+        <button type="button" class="navbar-toggle" data-toggle="oncanvas" data-target=".navmenu" data-canvas="body">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
     </div>
+    
+<div class="col-md-2"></div>
+<div class="centerContent col-md-8">
+    @RenderBody()
+</div>
 
-    <div class="container">
-        @RenderBody()    
-    </div>
+  @*@Html.Partial("_Footer")*@  
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jasny-bootstrap.min.js"></script>
+
+ 
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/mainMenu.js"></script>
 </body>
 </html>

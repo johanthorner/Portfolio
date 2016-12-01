@@ -1,14 +1,15 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@using System.Net.Mime
-@using WebbShop1.Models
+
 @model List<WebbShop1.Models.Category>
 <div class="jumbotron">
-    <h1>Webshop </h1>
-    <p class="lead"></p>
+    
+        <h1>Webshop </h1>
+        <p class="lead"></p>
+    
 </div>
-
+<div class ="parallax"></div>
 
 <div class="row">
     @foreach (var post in Model)
