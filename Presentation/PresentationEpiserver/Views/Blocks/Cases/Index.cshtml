@@ -1,0 +1,26 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using PresentationEpiserver.Classes
+@using PresentationEpiserver.Helpers
+
+@model PresentationEpiserver.Models.Blocks.Cases
+
+<div>
+    @Html.PropertyFor(m => m.Header)
+</div>
+<div class="cases">
+    @Html.PropertyFor(m => m.Text)
+</div>
+<div class="col-lg-8 col-lg-offset-2">
+    @{
+var root = EPiServer.Web.SiteDefinition.Current.SiteUrl.AbsoluteUri.TrimEnd('/');
+            foreach (var item in Html.GetCasePages())
+            {
+                <div class="casePresentaiton">
+                    <a href="@root@item.LinkURL">
+                        @Html.PropertyFor(m => item.CaseThumbnail, new { ImageCssClass = item.NumberOfColumns, AdditionalCssClass = "caseImage" })
+                    </a>
+                </div>
+            }
+        }
+</div>

@@ -1,0 +1,40 @@
+﻿@using EPiServer.Core
+@using EPiServer.ServiceLocation
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Web.Routing
+@model PresentationEpiserver.Models.ViewModels.BloggListPageViewModel
+
+@{
+    var root = EPiServer.Web.SiteDefinition.Current.SiteUrl.AbsoluteUri.TrimEnd('/');
+    foreach (var blogg in Model.Bloggs)
+    {
+        <div class="col-lg-6 col-lg-offset-3 bloggPreview">
+            @Html.PropertyFor(m => blogg.Image, new { ImageWidth = "889", ImageHeight = "530", AdditionalCssClass = "bloggFeedImage" })
+            <p class="bloggDate">@blogg.Changed.ToString("%d") @blogg.Changed.ToString("MMMM") @blogg.Changed.ToString("yyyy")</p>
+            <h2>@blogg.Header</h2>
+            <p class="bloggIngress">@blogg.ingress</p>
+            <a href="@root@blogg.LinkURL" class="GoToBloggPostButton">@Model.ButtonText</a>
+        </div>
+    }
+    <div class="col-md-2 col-md-offset-5 pageinationList">
+        <ul>
+           @for (int i = 1; i <= Model.PaginationViewModel.NumberOfPages; i++)
+           {
+               string cssClass = "";
+               if (Model.Selected == i )
+               {
+                   cssClass = "selected";
+               }
+               <li>
+                   @Ajax.ActionLink(
+                    linkText: i.ToString(),
+                    actionName: "Index",
+                    controllerName: "BloggFeedPage",
+                    routeValues: new { p = i },
+                    ajaxOptions: new AjaxOptions { },
+                    htmlAttributes: new { @class = cssClass })
+               </li>
+           } 
+        </ul>
+    </div>
+}

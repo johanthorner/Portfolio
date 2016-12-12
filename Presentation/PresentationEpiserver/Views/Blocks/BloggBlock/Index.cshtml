@@ -1,0 +1,20 @@
+﻿@using PresentationEpiserver.Classes
+
+@model PresentationEpiserver.Models.ViewModels.BloggListPageViewModel
+
+
+    <h2>Bloggs</h2>
+
+    @{
+        var root = EPiServer.Web.SiteDefinition.Current.SiteUrl.AbsoluteUri.TrimEnd('/');
+        foreach (var blogg in Model.Bloggs)
+        {
+                <div class="col-lg-6 col-lg-offset-3">
+                    @Html.PropertyFor(m => blogg.Image, new { ImageWidth = "889", ImageHeight = "530", AdditionalCssClass = "col-lg-12" })
+                    <h2>@blogg.Header</h2>
+                    @blogg.ingress
+
+                    <a href="@root@blogg.LinkURL" class="GoToBloggPostButton">@Model.ButtonText</a>
+                </div>
+        }
+    }

@@ -1,0 +1,11 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Blocks.CustomersBlock
+<div class="col-lg-6 col-lg-offset-3">
+    <div>
+        <h2>@Html.PropertyFor(m => m.Header)</h2>
+    </div>
+
+    @Html.PropertyFor(m => m.CustomersArea)
+</div>

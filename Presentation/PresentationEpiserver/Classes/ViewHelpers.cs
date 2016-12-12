@@ -18,5 +18,12 @@ namespace PresentationEpiserver.Classes
             var startpage = contentLoader.Get<StartPage>(ContentReference.StartPage);
             return contentLoader.GetChildren<CasePage>(startpage.CaseRoot).ToList();
         }
+
+        public static List<BloggPage> GetBloggPages(this HtmlHelper helper)
+        {
+            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            var startPage = contentLoader.Get<StartPage>(ContentReference.StartPage);
+            return contentLoader.GetChildren<BloggPage>(startPage.BloggRoot).ToList();
+        }
     }
 }

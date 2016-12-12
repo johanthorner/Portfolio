@@ -1,0 +1,21 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Blocks.Contact
+    <div class="col-lg-3">
+        @Html.PropertyFor(m => m.Photo, new { ImageCssClass = "col-md-12" })
+        <div class="col-lg-6">
+            <ul>
+                <li>
+                    @Html.PropertyFor(m => m.Name)
+                </li>
+                <li>
+                    @Html.PropertyFor(m => m.Title)
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+

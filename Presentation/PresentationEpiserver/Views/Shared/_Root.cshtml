@@ -31,7 +31,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
         <nav class="navbar navbar-light bg-faded">
             <div class="navbar-header">
-                <a href="@startPage.LinkURL">cloudnine°</a>
+                <a href="@startPage.LinkURL"><img src="~/Content/Images/Logos/logotyp_cloudnine.png" class="logo" width="100px" height="20px" /></a>
             </div>
             <ul class="nav navbar-nav">
                 @foreach (var item in Html.GetSubMenuItems())
@@ -48,16 +48,11 @@
             <span class="icon-bar"></span>
         </button>
     </div>
-    
-<div class="col-md-2"></div>
-<div class="centerContent col-md-8">
+    @*centerContent col-md-8 col-lg-offset-2*@
+<div class="centerContent col-md-12">
     @RenderBody()
 </div>
-
   @*@Html.Partial("_Footer")*@  
-
-
- 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/mainMenu.js"></script>

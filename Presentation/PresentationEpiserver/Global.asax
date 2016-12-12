@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Language="C#" Inherits="PresentationEpiserver.EPiServerApplication" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Language="C#" Inherits="PresentationEpiserver.Global" %>

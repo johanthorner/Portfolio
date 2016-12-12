@@ -40,6 +40,21 @@ body .footer {
     padding-bottom: 40px;
     padding-top: 40px;
 }
+body .CustomForm {
+     margin-top: calc(100% + 300px);
+     background: white !important;
+     position: absolute;
+     height: 300px;
+     right: 100px;
+     left: 100px;
+     bottom: 0%;
+     background-color: #efefef;
+     text-align: center;
+}
+
+.bloggPreviewImage {
+    padding-bottom: 195px;
+}
 
 .col-md-3 .caseBox {
     background-color: grey;
@@ -52,8 +67,6 @@ body .footer {
     margin-bottom: 30px;
 }
 
-
-
 .casePresentaiton h4 { 
    position: absolute; 
    top: 300px; 
@@ -63,7 +76,7 @@ body .footer {
 
 .regular {
    text-align: left;
-    line-height: 2.8;
+   line-height: 2.8;
 }
 
 p {
@@ -71,4 +84,122 @@ p {
 }
 .cases p {
     text-align: center;
+}
+.CustomForm button {
+    border-radius: 2px;
+    background-color:white;
+    border-style: solid;
+    color: black;
+    padding: 15px 60px;
+    margin: 60px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.GoToBloggPostButton {
+    border-radius: 1px;
+    background-color:white;
+    border-style: solid;
+    border-width: 1px;
+    color: grey;
+    padding: 9px 15px;
+    margin : 20px 10px 60px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.CustomForm input  {
+    border-radius: 2px;
+    background-color:white;
+    border-style: solid;
+    color: black;
+    padding: 10px 185px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 7px;
+}
+.CustomForm h2  {
+    padding: 30px 20px;
+}
+
+::-webkit-input-placeholder {
+   text-align: left;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: left;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: left;  
+}
+
+:-ms-input-placeholder {  
+   text-align: left; 
+}
+
+.pageinationList .ul {
+    text-align: center;
+}
+.pageinationList > ul > li {
+      float: left;
+      list-style-type: none;
+} 
+
+.pageinationList > ul > li > a {
+    padding: 10px;
+    border-radius: 1px;
+    background-color:white;
+    border-style: solid;
+    border-width: 1px;
+    color: grey;
+    text-decoration: none;
+}
+
+.pageinationList > ul > li a:hover {
+    text-decoration: none;
+    color: black;
+    background: lightgray;
+    border-color: grey;
+}
+.pageinationList > ul > li .selected:hover {
+     color: white;
+    background: grey;
+    border-color: lightgray;
+}
+.pageinationList > ul > li .selected {
+    color: white;
+    background: grey;
+}
+.bloggFeedImage {
+    padding-left: 0;
+    padding-right: 0;
+}
+.logo {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.bloggDate {
+    padding-top: 80px;
+}
+.bloggIngress {
+    padding-top: 40px;
+}
+.bloggPreview {
+    padding-top: 180px;
+}
+.navbar-nav {
+    float: right;
+    margin: 0;
+}
+.contactBlockInfo {
+    padding-top: 100px;
+    padding-left: 60px; 
+    padding-right: 60px; 
+    padding-bottom: 110px; 
 }

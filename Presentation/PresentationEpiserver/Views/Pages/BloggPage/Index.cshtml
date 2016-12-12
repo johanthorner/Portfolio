@@ -1,0 +1,10 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Pages.BloggPage
+
+<div class="col-lg-6 col-lg-offset-3 bloggPreview">
+        @Html.PropertyFor(m => Model.Image, new { ImageWidth = "889", ImageHeight = "530", AdditionalCssClass = "bloggFeedImage" })
+        @Html.PropertyFor(m => m.Header)
+        @Html.PropertyFor(m => m.Text)
+</div>
