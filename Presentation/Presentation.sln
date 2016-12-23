@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookService", "BookService\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Knockout js", "Knockout js", "{EEDE405C-A872-4984-AC52-57CD9EB1E02A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "neonetChristmas", "neonetChristmas\neonetChristmas.csproj", "{8BE1AE9C-C58E-4079-A100-D849AE8B6842}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{0A4BD2AF-DEEE-4ED5-97D7-0FC0BB4355A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A4BD2AF-DEEE-4ED5-97D7-0FC0BB4355A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A4BD2AF-DEEE-4ED5-97D7-0FC0BB4355A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE1AE9C-C58E-4079-A100-D849AE8B6842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE1AE9C-C58E-4079-A100-D849AE8B6842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE1AE9C-C58E-4079-A100-D849AE8B6842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE1AE9C-C58E-4079-A100-D849AE8B6842}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

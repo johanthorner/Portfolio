@@ -8,9 +8,8 @@
 @{
     var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
     var startPage = contentLoader.Get<PresentationEpiserver.Models.Pages.StartPage>(ContentReference.StartPage);
-   
 }
-<div class="row">
+<div class="col-lg-10 col-lg-offset-1">
     <div class="col-lg-6 contactBlockInfo">
         @Html.PropertyFor(m => m.ContactPresentationText)
     </div>
@@ -23,11 +22,8 @@
         <a href="mailto:@startPage.Mail" target="_top">@startPage.Mail</a>
         <p>@startPage.AdditionalInfo</p>
         <p>@startPage.AdditionalInfoLineTwo</p>
-        
-      
-       
     </div>
 </div>
-<div>
+<div class="col-lg-10 col-lg-offset-1">
   @Html.PropertyFor(m => m.ContactArea)
 </div>

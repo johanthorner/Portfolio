@@ -1,0 +1,8 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Blocks.ImageLarge
+
+<div class="col-lg-12 largeImage">
+    @Html.PropertyFor(m => Model.Image, new { ImageCssClass = "col-md-12 largeImage" })
+</div>

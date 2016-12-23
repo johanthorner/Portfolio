@@ -61,6 +61,11 @@ body .CustomForm {
 }
 .centerContent{
     padding-bottom: 300px;
+    padding-left: 0;
+    padding-right: 0px;
+}
+.hidden {
+    display: none;
 }
 .caseImage {
     margin-top: 20px;
@@ -110,7 +115,47 @@ p {
     display: inline-block;
     font-size: 16px;
 }
+.GoToJobbPostButton {
+  padding: 15px 60px 15px 60px !important;
+    border-width: 2px !important;
+    border-radius: 1px;
+    background-color:white;
+    border-style: solid;
+    color: grey;
+    margin : 20px 10px 60px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    letter-spacing: 2px !important;
+}
 
+.GoToJobbPostButton:hover {
+    padding: 15px 60px 15px 60px !important;
+    border-width: 2px !important;
+    border-radius: 1px;
+    background-color:white;
+    border-style: solid;
+    color: grey;
+    margin : 20px 10px 60px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    letter-spacing: 2px !important;
+}
+.jobbPost {
+    text-align: center;
+}
+.blockPadding {
+    padding-top: 100px;
+}
+.blockPaddingSmall {
+    padding-top: 50px;
+}
 .CustomForm input  {
     border-radius: 2px;
     background-color:white;
@@ -168,7 +213,7 @@ p {
     border-color: grey;
 }
 .pageinationList > ul > li .selected:hover {
-     color: white;
+    color: white;
     background: grey;
     border-color: lightgray;
 }
@@ -197,9 +242,95 @@ p {
     float: right;
     margin: 0;
 }
+.navbar-fixed-top {
+    top: -100px;
+}
 .contactBlockInfo {
     padding-top: 100px;
     padding-left: 60px; 
     padding-right: 60px; 
     padding-bottom: 110px; 
 }
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;
+  }
+ .carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+.largeImage {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#goToTopp img {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 2000;
+}
+.event h3 {
+    text-align: left;
+}
+.latestNews h3 {
+    text-align: left;
+    padding-left: 13px;
+}
+.bloggIndex {
+    display: none;
+}
+.bloggSearch {
+    display: none;
+}
+.navbar-default .navbar-nav > li > .active-link > a {
+    color: red;
+}
+
+
+

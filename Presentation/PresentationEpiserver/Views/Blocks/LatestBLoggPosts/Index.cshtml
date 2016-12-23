@@ -1,0 +1,25 @@
+﻿
+@using PresentationEpiserver.Classes
+@using PresentationEpiserver.Helpers
+
+
+@model PresentationEpiserver.Models.Blocks.LatestBloggPosts
+
+
+@{    
+    var root = EPiServer.Web.SiteDefinition.Current.SiteUrl.AbsoluteUri.TrimEnd('/');
+    <div class="row">
+    
+        <div class="col-lg-10 col-lg-offset-1 latestNews">
+            <h3>@Html.PropertyFor(m => m.Header)</h3>
+            @for (var i = 0; i <= 3; i++)
+            {
+                <div class="col-lg-3">
+                    @Html.PropertyFor(m => Html.GetBloggs()[i].Image, new {ImageWidth = "300", ImageHeight = "177", AdditionalCssClass = "bloggFeedImageThumbnail"})
+                    <a href="@root@Html.GetBloggs()[i].LinkURL">@Html.GetBloggs()[i].Header</a>
+                    <p>@Html.GetBloggs()[i].ingress</p>
+                </div>
+            }
+        </div>
+    </div>
+}

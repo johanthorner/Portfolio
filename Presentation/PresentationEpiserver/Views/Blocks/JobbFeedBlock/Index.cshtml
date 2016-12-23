@@ -1,0 +1,12 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Blocks.JobbFeedBlock
+<div class="col-lg-12 blockPadding">
+    <div>
+        <h2>@Html.PropertyFor(m => m.Header)</h2>
+    </div>
+    <div>
+        @Html.PropertyFor(m => m.JobbArea, new { Model.LinkText })
+    </div>  
+</div>

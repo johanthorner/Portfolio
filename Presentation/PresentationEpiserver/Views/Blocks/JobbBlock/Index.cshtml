@@ -1,0 +1,17 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Forms.Helpers.Internal
+@using EPiServer.ServiceLocation
+@using EPiServer.Web.Mvc
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Blocks.JobbBlock
+@{
+    var linkText = ViewData["LinkText"];
+}
+<div class="col-lg-6 col-lg-offset-3 jobbPost blockPaddingSmall">
+   <h3 class="blockPaddingSmall">@Html.PropertyFor(m => m.Title)</h3>
+    <p class="blockPaddingSmall">@Html.PropertyFor(m => m.Text)</p>
+   <a href="@Html.PropertyFor(m => m.Link)" class="GoToJobbPostButton">@linkText</a>
+</div>
+

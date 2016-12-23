@@ -10,6 +10,13 @@ namespace PresentationEpiserver.Models.Pages
     [ContentType(DisplayName = "StartPage", GUID = "8920e26f-c50a-4c61-9e97-98182226b85f", Description = "")]
     public class StartPage : SitePageData
     {
+        [CultureSpecific]
+        [Display(
+            Name = "Main Content",
+            Description = "",
+            GroupName = SystemTabNames.Content,
+            Order = 5)]
+        public virtual ContentArea MainContent { get; set; }
 
         [CultureSpecific]
         [Display(

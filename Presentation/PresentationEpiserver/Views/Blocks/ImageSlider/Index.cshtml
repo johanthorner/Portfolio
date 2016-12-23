@@ -1,0 +1,60 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.ServiceLocation
+@using EPiServer.Web.Mvc.Html
+@using PresentationEpiserver.Models.Blocks
+
+@model PresentationEpiserver.Models.Blocks.ImageSlider
+@*col-lg-10 col-lg-offset-1*@
+    <div id="myCarousel" class="carousel slide carousel-fade col-lg-10 col-lg-offset-1" data-ride="carousel">
+        @{
+            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            int counter = 1;
+            <ol class="carousel-indicators">
+                @foreach (var image in Model.Images.Items)
+            {
+                if (counter == 1)
+                {
+                        <li data-target="#myCarousel" data-slide-to="@counter" class="active"></li>
+                        counter++;
+                    }
+                    else
+                    {
+                        <li data-target="#myCarousel" data-slide-to="@counter"></li>
+                        counter++;
+                    }
+                }
+            </ol>
+            bool flagg = true;
+            <div class="carousel-inner" role="listbox">
+
+                @foreach (var imageItem in Model.Images.Items)
+            {
+                var image = contentLoader.Get<ImageForImageSlider>(imageItem.GetContent().ContentLink);
+                if (flagg)
+                {
+                        <div class="item active">
+                            @Html.PropertyFor(m => image.Image, new { ImageWidth = "889", ImageHeight = "530", AdditionalCssClass = "bloggFeedImage" })
+                        </div>
+                        flagg = false;
+                    }
+                    else
+                    {
+                        <div class="item">
+                            @Html.PropertyFor(m => image.Image, new { ImageWidth = "889", ImageHeight = "530", AdditionalCssClass = "bloggFeedImage" })
+                        </div>
+                    }
+                }
+            </div>
+        }
+        <a class="left carousel-control animationExeption" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control animationExeption" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+

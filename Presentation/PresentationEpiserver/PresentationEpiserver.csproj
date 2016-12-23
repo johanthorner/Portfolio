@@ -170,7 +170,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NuGet.Core, Version=2.5.40416.9020, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -189,6 +189,11 @@
       <HintPath>..\packages\structuremap.web-signed.3.1.6.186\lib\net40\StructureMap.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -201,6 +206,14 @@
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -244,11 +257,14 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Classes\ContactBlockViewModel.cs" />
     <Compile Include="Classes\ImageFile.cs" />
     <Compile Include="Classes\CustomViewEngine.cs" />
+    <Compile Include="Controllers\api\BloggsController.cs" />
+    <Compile Include="Controllers\SmallBlogFeedController.cs" />
+    <Compile Include="Helpers\MenuItem.cs" />
     <Compile Include="Classes\NumberOfCollumns.cs" />
-    <Compile Include="Classes\ViewHelpers.cs" />
     <Compile Include="Controllers\BasePageController.cs" />
     <Compile Include="Controllers\BloggBlockController.cs" />
     <Compile Include="Controllers\BloggFeedPageController.cs" />
@@ -258,14 +274,24 @@
     <Compile Include="Controllers\ContactBlockController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomersBlockController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\EventFeedController.cs" />
     <Compile Include="Controllers\FormAreaController.cs" />
     <Compile Include="Controllers\FourColumnArticleController.cs" />
     <Compile Include="Controllers\FullColumnArticleController.cs" />
+    <Compile Include="Controllers\ImageForImageSliderController.cs" />
+    <Compile Include="Controllers\ImageLargeController.cs" />
+    <Compile Include="Controllers\ImageSliderController.cs" />
+    <Compile Include="Controllers\JobbBlockController.cs" />
+    <Compile Include="Controllers\JobbFeedBlockController.cs" />
+    <Compile Include="Controllers\LatestBloggPostsController.cs" />
+    <Compile Include="Controllers\LinkButtonController.cs" />
     <Compile Include="Controllers\MainCategoryBlockController.cs" />
     <Compile Include="Controllers\PresentationController.cs" />
     <Compile Include="Controllers\ShopBlockController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Controllers\SubCategoryBlockController.cs" />
+    <Compile Include="Controllers\TextBlockCenteredCollumnController.cs" />
     <Compile Include="fonts\TextBlockBigController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -279,9 +305,18 @@
     <Compile Include="Models\Blocks\ContactBlock.cs" />
     <Compile Include="Models\Blocks\Customer.cs" />
     <Compile Include="Models\Blocks\CustomersBlock.cs" />
+    <Compile Include="Models\Blocks\Event.cs" />
+    <Compile Include="Models\Blocks\EventFeed.cs" />
     <Compile Include="Models\Blocks\FormArea.cs" />
     <Compile Include="Models\Blocks\FourColumnArticle.cs" />
     <Compile Include="Models\Blocks\FullColumnArticleBlock.cs" />
+    <Compile Include="Models\Blocks\ImageForImageSlider.cs" />
+    <Compile Include="Models\Blocks\ImageLarge.cs" />
+    <Compile Include="Models\Blocks\ImageSlider.cs" />
+    <Compile Include="Models\Blocks\JobbBlock.cs" />
+    <Compile Include="Models\Blocks\JobbFeedBlock.cs" />
+    <Compile Include="Models\Blocks\LatestBloggPosts.cs" />
+    <Compile Include="Models\Blocks\LinkButton.cs" />
     <Compile Include="Models\Blocks\Product.cs" />
     <Compile Include="Models\Blocks\SelectMainCategory.cs" />
     <Compile Include="Models\Blocks\SelectMainCategoryEditorSelector.cs" />
@@ -289,9 +324,12 @@
     <Compile Include="Models\Blocks\SelectSubCategory.cs" />
     <Compile Include="Models\Blocks\SelectSubCategoryEditorSelector.cs" />
     <Compile Include="Models\Blocks\ShopBlock.cs" />
+    <Compile Include="Models\Blocks\SmallBlogFeed.cs" />
     <Compile Include="Models\Blocks\SubCategoryBlock.cs" />
     <Compile Include="Models\Blocks\SubmitContactInformationBlock.cs" />
     <Compile Include="Models\Blocks\TextBlockBig.cs" />
+    <Compile Include="Models\Blocks\TextBlockCenteredCollumn.cs" />
+    <Compile Include="Models\Blogg.cs" />
     <Compile Include="Models\Pages\BasePage.cs" />
     <Compile Include="Models\Pages\BloggFeedPage.cs" />
     <Compile Include="Models\Pages\BloggPage.cs" />
@@ -302,6 +340,9 @@
     <Compile Include="Models\ViewModels\BloggListBlockViewModel.cs" />
     <Compile Include="Models\ViewModels\PaginationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StructureMapDependencyResolver.cs" />
+    <Compile Include="StructureMapDependencyResolverInitialization.cs" />
+    <Compile Include="Utilities\BlogUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
@@ -315,11 +356,23 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\customStyle.css" />
+    <Content Include="Content\Images\Icons\small-left-arrow-icon.png" />
+    <Content Include="Content\Images\Icons\topp.png" />
     <Content Include="Content\Images\Logos\logotyp_cloudnine.png" />
     <Content Include="Content\Images\socialMediaLogos\facebook.png" />
     <Content Include="Content\Images\socialMediaLogos\instagram.png" />
     <Content Include="Content\Images\socialMediaLogos\linkedin.png" />
     <Content Include="Content\Images\socialMediaLogos\twitter.png" />
+    <Content Include="Content\video-js.css" />
+    <Content Include="Content\video-js.min.css" />
+    <Content Include="Content\video-js.swf" />
+    <Content Include="Content\videojs-background.js" />
+    <Content Include="Content\Video\NeonetHolidayAnimation_mix.mp4" />
+    <Content Include="fonts\vjs.svg" />
+    <Content Include="Scripts\CustomScripts\BloggIndexAndSearch.js" />
+    <Content Include="Scripts\CustomScripts\ColorScript.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\CustomScripts\MenuAnimation.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -339,12 +392,33 @@
     <Content Include="modules\_protected\EPiServer.Forms\EPiServer.Forms.zip" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\web.config" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\EPiServer.Packaging.UI.zip" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\mainMenu.js" />
+    <Content Include="fonts\vjs.woff" />
+    <Content Include="fonts\vjs.ttf" />
+    <Content Include="fonts\vjs.eot" />
+    <Content Include="Content\video-js.less" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\CustomScripts\mainMenu.js" />
+    <Content Include="Scripts\paintbrush.js" />
+    <Content Include="Scripts\video.dev.js" />
+    <Content Include="Scripts\video.js" />
+    <Content Include="Scripts\videojs-background.js" />
+    <Content Include="Scripts\vjs-lang\de.js" />
+    <Content Include="Scripts\vjs-lang\es.js" />
+    <Content Include="Scripts\vjs-lang\fr.js" />
+    <Content Include="Scripts\vjs-lang\it.js" />
+    <Content Include="Scripts\vjs-lang\ja.js" />
+    <Content Include="Scripts\vjs-lang\ko.js" />
+    <Content Include="Scripts\vjs-lang\nl.js" />
+    <Content Include="Scripts\vjs-lang\pt-BR.js" />
+    <Content Include="Scripts\vjs-lang\ru.js" />
+    <Content Include="Scripts\vjs-lang\uk.js" />
+    <Content Include="Scripts\vjs-lang\zh.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -353,7 +427,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\StartPage\Index.cshtml" />
     <Content Include="Views\Presentation\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_Root.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Pages\BasePage\Index.cshtml" />
@@ -376,6 +449,19 @@
     <Content Include="Views\Blocks\CasesBlock\Index.cshtml" />
     <Content Include="Views\Blocks\ContactBlock\Index.cshtml" />
     <Content Include="Views\Blocks\Contact\Index.cshtml" />
+    <Content Include="Views\Blocks\ImageSlider\Index.cshtml" />
+    <Content Include="Views\Blocks\ImageForImageSlider\Index.cshtml" />
+    <Content Include="Views\Blocks\TextBlockCenteredCollumn\Index.cshtml" />
+    <Content Include="Views\Blocks\JobbFeedBlock\Index.cshtml" />
+    <Content Include="Views\Blocks\JobbBlock\Index.cshtml" />
+    <Content Include="Views\Blocks\ImageLarge\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Blocks\EventFeed\Index.cshtml" />
+    <Content Include="Views\Blocks\Event\Index.cshtml" />
+    <Content Include="Views\LinkButton\Index.cshtml" />
+    <Content Include="Views\Blocks\LatestBLoggPosts\Index.cshtml" />
+    <Content Include="Views\Blocks\SmallBlogFeed\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

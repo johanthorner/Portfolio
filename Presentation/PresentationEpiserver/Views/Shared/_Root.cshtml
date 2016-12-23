@@ -4,57 +4,94 @@
 @using PresentationEpiserver.Helpers
 @using EPiServer.Web.Mvc.Html
 
-@{
-    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-    var startPage = contentLoader.Get<PresentationEpiserver.Models.Pages.StartPage>(ContentReference.StartPage);
-}
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Cloudnine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/customStyle.css" rel="stylesheet" />
-    @*<link href="~/Content/jasny-bootstrap.min.css" rel="stylesheet" />*@
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-
-    <div class="navbar navbar-default navbar-fixed-top">
-        <nav class="navbar navbar-light bg-faded">
+    <nav class="navbar navbar-default navbar-fixed-top customNavbar">
+        <div class="container">
             <div class="navbar-header">
-                <a href="@startPage.LinkURL"><img src="~/Content/Images/Logos/logotyp_cloudnine.png" class="logo" width="100px" height="20px" /></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand custom-brand" href="#">
+                    <img src="~/Content/Images/Logos/logotyp_cloudnine.png" width="100" height="20"/>
+                </a>
             </div>
-            <ul class="nav navbar-nav">
-                @foreach (var item in Html.GetSubMenuItems())
-                {
-                    <li class="nav-item">
-                        @Html.ContentLink(item.ContentLink)
-                    </li>
-                }
-            </ul>
-        </nav>
-        <button type="button" class="navbar-toggle" data-toggle="oncanvas" data-target=".navmenu" data-canvas="body">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+            <div id="navbar" class="navbar-collapse collapse out" aria-expanded="true">
+                <ul class="nav navbar-nav">
+                    @{
+                        bool displayBloggIcons = false;
+                    }
+                    @foreach (var item in Html.GetMenuItems())
+                    {
+                        string cssString = "nav-item ";
+
+                        if (item.IsBloggPage)
+                        {
+                            cssString += "bloggPageLink ";
+                        }
+                        if (item.Active)
+                        {
+                            cssString += "active-link";
+                        }
+                        if (item.Active && item.IsBloggPage)
+                        {
+                            displayBloggIcons = true;
+                        }
+                        <li class="@cssString">
+                            @Html.ContentLink(item.SitePageData.ContentLink)
+                        </li>
+                    }
+                    @{
+                        if (displayBloggIcons)
+                        {
+                            <li><a id="displayIndex" class="animationExeption" href="">INDEX</a></li>
+                            <li><a id="displaySearch" class="animationExeption" href="">SÖK</a></li>
+                        }
+                    }
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="centerContent hidden col-md-12">
+        @RenderBody()
+
+        <div id="goToTopp" class="animationExeption">
+            <a class="goToTopp animationExeption" href=""><img src="~/Content/Images/Icons/small-left-arrow-icon.png" width="100" height="50" /></a>
+        </div>
+        @*@Html.Partial("_Footer")*@
     </div>
-    @*centerContent col-md-8 col-lg-offset-2*@
-<div class="centerContent col-md-12">
-    @RenderBody()
-</div>
-  @*@Html.Partial("_Footer")*@  
-    <script src="https://code.jquery.com/jquery.js"></script>
+   
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/mainMenu.js"></script>
+
+    <script src="~/Scripts/CustomScripts/ColorScript.js"></script>
+    <script src="~/Scripts/CustomScripts/BloggIndexAndSearch.js"></script>
+    <script src="~/Scripts/CustomScripts/MenuAnimation.js"></script>
 </body>
 </html>
+@{
+//todo: videojumbotron
+//todo: styla formuläret
+
+//todo:-Meny gör den vit på sidor som inte är start
+//todo:-Meny /blogg sök och index
+//todo:-Meny /blogg sök och index 
+
+//todo: -footer- gör socialMedia loggorna klara styla
+//todo: fadningar i caseImages
+//todo: snygga till url:en
+//todo: Gör editläget bättre
+//todo: fixa css.
+//todo: fixa metadata
+}

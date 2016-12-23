@@ -1,0 +1,59 @@
+﻿@using EPiServer
+@using EPiServer.Core
+@using EPiServer.ServiceLocation
+@using EPiServer.Web.Mvc.Html
+@using PresentationEpiserver.Models.Blocks
+
+@model PresentationEpiserver.Models.Blocks.EventFeed
+
+@helper DisplayEvent(Event item, bool comingEvent)
+{
+    <div class="row ">
+        <div class="col-lg-5 col-lg-offset-1">
+           @Html.PropertyFor(m => item.Image, new { ImageCssClass = "col-md-12" })
+        </div>
+        <div class="col-lg-5 event">
+            <h3>@Html.PropertyFor(m => item.Title)</h3>
+            <p>@Html.PropertyFor(m => item.Text)</p>
+            
+            <p>@Html.PropertyFor(m => item.Speaker)</p>
+            <p>@Html.PropertyFor(m => item.DateAndTime)</p>
+            <p>@Html.PropertyFor(m => item.Adress)</p>
+            @if (comingEvent)
+            {
+                <a class="GoToJobbPostButton" href="@Html.PropertyFor(m => item.Link)">@Html.PropertyFor(m => Model.Linktext)</a>
+            }
+        </div>
+    </div>
+}
+<div class="col-lg-12">
+    @{
+        <h1>@Html.PropertyFor(m => Model.HeaderComingEvents)</h1>
+        var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+        if (Model.Events != null && Model.Events.Items.Any())
+        {
+            foreach (var contentItem in Model.Events.Items)
+            {
+                var item = contentLoader.Get<Event>(contentItem.ContentLink);
+                if (item.DateAndTime >= DateTime.Now)
+                {
+                    @DisplayEvent(item, true)
+                }
+            }
+            <h1>@Html.PropertyFor(m => Model.HeaderPastEvents)</h1>
+            foreach (var contentItem in Model.Events.Items)
+            {
+                var item = contentLoader.Get<Event>(contentItem.ContentLink);
+                if (item.DateAndTime <= DateTime.Now)
+                {
+                    @DisplayEvent(item, false)
+                }
+            }
+
+        }
+    }
+</div>
+
+
+
+

@@ -1,0 +1,8 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Blocks.TextBlockCenteredCollumn
+<div class="col-lg-6 col-lg-offset-3 blockPadding">
+    <h2>@Html.PropertyFor(m => m.Header)</h2>
+    <p>@Html.PropertyFor(m => m.Text)</p>
+</div>

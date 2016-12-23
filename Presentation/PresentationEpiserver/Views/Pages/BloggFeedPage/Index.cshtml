@@ -3,12 +3,57 @@
 @using EPiServer.Web.Mvc.Html
 @using EPiServer.Web.Routing
 @model PresentationEpiserver.Models.ViewModels.BloggListPageViewModel
+<div class="bloggIndex">
+    
+    @{
+        <div class="col-lg-6 col-lg-offset-2 bloggPreview">
+            <div class="col-lg-6">
+                <ul>
+                    <li>Senaste blogginlägg</li>
+                    @foreach (var blogg in Model.Bloggs)
+                    {
+                        <li>@blogg.Header</li>
+                    }
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <ul>
+                    <li>Månad</li>
+                    @foreach (var blogg in Model.Bloggs)
+                    {
+                        <li>@blogg.Changed.ToString("MMMM") @blogg.Changed.ToString("yyyy")</li>
+                    }
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <ul>
+                    <li>kategori</li>
+                    @foreach (var blogg in Model.Bloggs)
+                    {
+                        <li>@blogg.</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+<div class="col-lg-6 col-lg-offset-2 bloggPreview bloggSearch">
+
+@{
+    using (Html.BeginForm("Index", "BloggFeedPage", FormMethod.Post))
+    {
+        @Html.TextBox("searchString")
+        <input type="submit" />
+    }
+    <p>@Model.LastSearch</p>
+}
+</div>
 
 @{
     var root = EPiServer.Web.SiteDefinition.Current.SiteUrl.AbsoluteUri.TrimEnd('/');
     foreach (var blogg in Model.Bloggs)
     {
-        <div class="col-lg-6 col-lg-offset-3 bloggPreview">
+        <div class="col-lg-6 col-lg-offset-2 bloggPreview">
             @Html.PropertyFor(m => blogg.Image, new { ImageWidth = "889", ImageHeight = "530", AdditionalCssClass = "bloggFeedImage" })
             <p class="bloggDate">@blogg.Changed.ToString("%d") @blogg.Changed.ToString("MMMM") @blogg.Changed.ToString("yyyy")</p>
             <h2>@blogg.Header</h2>
@@ -18,23 +63,26 @@
     }
     <div class="col-md-2 col-md-offset-5 pageinationList">
         <ul>
-           @for (int i = 1; i <= Model.PaginationViewModel.NumberOfPages; i++)
-           {
-               string cssClass = "";
-               if (Model.Selected == i )
-               {
-                   cssClass = "selected";
-               }
-               <li>
-                   @Ajax.ActionLink(
-                    linkText: i.ToString(),
-                    actionName: "Index",
-                    controllerName: "BloggFeedPage",
-                    routeValues: new { p = i },
-                    ajaxOptions: new AjaxOptions { },
-                    htmlAttributes: new { @class = cssClass })
-               </li>
-           } 
+            @for (int i = 1; i <= Model.PaginationViewModel.NumberOfPages; i++)
+            {
+                string cssClass = "";
+                if (Model.Selected == i )
+                {
+                    cssClass = "selected";
+                }
+                <li>
+                    @Ajax.ActionLink(
+                        linkText: i.ToString(),
+                        actionName: "Index",
+                        controllerName: "BloggFeedPage",
+                        routeValues: new { p = i },
+                        ajaxOptions: new AjaxOptions { },
+                        htmlAttributes: new { @class = cssClass })
+                </li>
+            } 
         </ul>
     </div>
 }
+<div>
+   
+</div>
