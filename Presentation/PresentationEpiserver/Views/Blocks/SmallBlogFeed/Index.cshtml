@@ -1,34 +1,28 @@
 ﻿@using EPiServer.Core
 @using EPiServer.Web.Mvc.Html
+@using PresentationEpiserver.Helpers
 
 @model PresentationEpiserver.Models.Blocks.SmallBlogFeed
 
 <div>
     <h2>@Html.PropertyFor(m => m.Header)</h2>
-    <div>
-        <ul class="blogList"></ul>
-
-    </div>
+    <div id="latestNews" class="col-lg-12"></div>
 </div>
 <script type="text/javascript">
 
-    var uri = 'http://localhost:7132/api/bloggs/en';
+    var uri = '/api/bloggs/en/4';
 
     $(document).ready(function () {
-        // Send an AJAX request
         $.getJSON(uri)
-            .done(function (data) {
-                // On success, 'data' contains a list of products.
-                $.each(data, function (key, item) {
-                    // Add a list item for the product.
-                    console.log(item.Header);
-                    $('.blogList')
-                        .append(
-                            $('<li>').append(item.Header));
-
-                    //$('<li>', { text: formatItem(item.Header) }).appendTo($('#blogs'));
-                });
-            });
+              .done(function (data) {
+                  $.each(data, function (key, item) {
+                      $('#latestNews')
+                          .append($('<div class="col-lg-3">')
+                          .append($('<img src="' + item.ImageUrl + '" class="col-lg-12" height ="216">'))
+                          .append("<h4>" + item.Header + "</h4>")
+                          .append("<p>" + item.Ingress + "</p></div>"));
+                  });
+              });
     });
 
 </script>
