@@ -17,9 +17,9 @@ namespace PresentationEpiserver.Classes
         {
             var items = new Dictionary<string, string>
             {
-                {"col-md-4", "1/3"},
-                {"col-md-6", "1/2"},
-                {"col-md-12", "1"}
+                {"col-lg-4 col-md-6 col-sm-12", "1/3"},
+                {"col-lg-6 col-md-12 col-sm-12", "1/2"},
+                {"col-lg-12 col-md-12 col-sm-12", "1"}
             };
             return items.Select(item => new SelectItem { Text = item.Value, Value = item.Key });
         }

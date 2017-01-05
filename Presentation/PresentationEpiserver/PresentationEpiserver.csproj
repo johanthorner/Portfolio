@@ -259,6 +259,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Classes\ContactBlockViewModel.cs" />
+    <Compile Include="Classes\GetColorNameFromHexString.cs" />
     <Compile Include="Classes\ImageFile.cs" />
     <Compile Include="Classes\CustomViewEngine.cs" />
     <Compile Include="Controllers\api\BloggsController.cs" />
@@ -370,7 +371,7 @@
     <Content Include="Content\Video\NeonetHolidayAnimation_mix.mp4" />
     <Content Include="fonts\vjs.svg" />
     <Content Include="Scripts\CustomScripts\BloggIndexAndSearch.js" />
-    <Content Include="Scripts\CustomScripts\ColorScript.js" />
+    <Content Include="Scripts\CustomScripts\Animations.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\CustomScripts\MenuAnimation.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -403,7 +404,6 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="Scripts\CustomScripts\mainMenu.js" />
     <Content Include="Scripts\paintbrush.js" />
     <Content Include="Scripts\video.dev.js" />
     <Content Include="Scripts\video.js" />

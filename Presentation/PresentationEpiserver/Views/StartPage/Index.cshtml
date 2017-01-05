@@ -7,5 +7,23 @@
     @Html.PropertyFor(m => m.MainContent)
 </div>
 <div>
-  @Html.PropertyFor(m => m.MainBody)
+    @Html.PropertyFor(m => m.MainBody)
 </div>
+
+<script type="text/javascript">
+    $(document)
+        .ready(function() {
+                $('.navbar').css("background-color", "black");
+                $('.navbar-default .navbar-nav > li > a').css("color", "white");
+                $('.navbar-brand > img').toggleClass("inverted");
+                $('.navbar-default .navbar-nav > li > a')
+                    .mouseenter(function() {
+                        $(this).css("color", "orangered");
+                    });
+                $('.navbar-default .navbar-nav > li > a')
+                    .mouseleave(function() {
+                        $(this).css("color", "white");
+                    });
+        });
+</script>
+

@@ -245,6 +245,10 @@ p {
 .navbar-fixed-top {
     top: -100px;
 }
+
+.inverted {
+    filter: invert(100%);
+}
 .contactBlockInfo {
     padding-top: 100px;
     padding-left: 60px; 
@@ -332,5 +336,11 @@ p {
     color: red;
 }
 
-
+.fot {
+    background: grey;
+}
+.carousel-caption h3{
+       text-align: left;
+       display: none;
+   }
 

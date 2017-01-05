@@ -1,6 +1,8 @@
-﻿@using EPiServer.Core
+﻿
+@using Castle.Core.Internal
+
 @using EPiServer.Web.Mvc.Html
-@using PresentationEpiserver.Classes
+
 @using PresentationEpiserver.Helpers
 
 @model PresentationEpiserver.Models.Blocks.Cases
@@ -11,16 +13,124 @@
 <div class="cases">
     @Html.PropertyFor(m => m.Text)
 </div>
-<div class="col-lg-8 col-lg-offset-2">
+<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
     @{
-var root = EPiServer.Web.SiteDefinition.Current.SiteUrl.AbsoluteUri.TrimEnd('/');
-            foreach (var item in Html.GetCasePages())
-            {
-                <div class="casePresentaiton">
-                    <a href="@root@item.LinkURL">
-                        @Html.PropertyFor(m => item.CaseThumbnail, new { ImageCssClass = item.NumberOfColumns, AdditionalCssClass = "caseImage" })
-                    </a>
+        int blockId = 0;
+        foreach (var item in Html.GetCasePages())
+        {
+            blockId++;
+            <div id="mycarousel" class="carousel slide @item.NumberOfColumns" data-ride="carousel">
+                <div class="item active casePresentaiton">
+                    <div class="carousel-inner">
+                        @{
+                            string colorClass = "";
+                            if (item.TextBackgroundColor.IsNullOrEmpty())
+                            {
+                                colorClass = "fallbackColor";
+
+                            }
+                            else
+                            {
+
+                                colorClass = item.TextBackgroundColor;
+                            }
+                        }
+                        <div class="carousel-item" data-color="@colorClass">
+
+                            @Html.PropertyFor(m => item.CaseThumbnail, new { })
+                            <div class="carousel-caption">
+                                <h3>@item.TextForBlock</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            }
-        }
+            </div>
+                            }
+    }
 </div>
+<script>
+    $(document)
+        .ready(function () {
+            $('.carousel-item')
+                .each(function (index, item) {
+                    var colorValue = $(item).data('color');
+                    var trimmedColorValue = colorValue.substring(1);
+                    console.log(item);
+                    $(item).addClass('tint');
+
+                    $(item)
+                        .mouseenter(function () {
+
+                            var css = '.tint:hover:before {background:#' + trimmedColorValue + ';}',
+                                head = document.head || document.getElementsByTagName('head')[0],
+                                style = document.createElement('style');
+
+                            style.type = 'text/css';
+                            if (style.styleSheet) {
+                                style.styleSheet.cssText = css;
+                            } else {
+                                style.appendChild(document.createTextNode(css));
+                            }
+                            head.appendChild(style);
+
+                            $(item).addClass('tint:hover:before');
+                            console.log('hello');
+                        }).mouseleave(function () {
+                            console.log('world');
+                        });
+                });
+        });
+</script>
+
+<style>
+    .caseImage {
+        display: block;
+        z-index: -1;
+        margin-bottom: 100px;
+        position: relative;
+    }
+
+    .tint {
+        position: relative;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+        .tint:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            transition: all .3s linear;
+            background: none;
+        }
+
+    /*.tint:hover:before {
+        background: rgba(0,255,255, 0.5);
+    }
+
+    .fallbackColor:hover:before {
+        background: rgba(0,0,255, 0.5);
+    }*/
+
+    /*.green:hover:before {
+        background: #00ff00;
+    }
+
+    .t4:before {
+        background: rgba(0,255,0, 0.5);
+    }
+
+    .t5:before {
+        background: rgba(255,0,240, 0.5);
+    }
+
+    .t6:before {
+        background: rgba(255,102,0, 0.6);
+    }*/
+</style>

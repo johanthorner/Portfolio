@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using EPiServer;
 using EPiServer.AddOns.Helpers;
+using EPiServer.Cms.Shell;
 using EPiServer.Core;
 using EPiServer.Core.Html;
 using EPiServer.ServiceLocation;
@@ -36,8 +37,8 @@ namespace PresentationEpiserver.Controllers.api
                 ID = b.ContentLink.ID,
                 Ingress = b.ingress != null ? TextIndexer.StripHtml(b.ingress.ToHtmlString(), int.MaxValue) : string.Empty,
                 CultureInfo = b.Language,
-                ImageUrl = b.Image.GetPublicUrl()
-
+                ImageUrl = b.Image.GetPublicUrl(),
+                BloggPageUrl = b.ContentLink.GetPublicUrl()
 
             }).ToList().Take(numberOfArticles);
 

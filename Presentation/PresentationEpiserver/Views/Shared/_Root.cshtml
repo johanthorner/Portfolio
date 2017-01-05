@@ -9,9 +9,11 @@
 <head>
     <title>Cloudnine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @RenderSection("CustomHeader", false)
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/customStyle.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+  
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top customNavbar">
@@ -24,7 +26,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand custom-brand" href="#">
-                    <img src="~/Content/Images/Logos/logotyp_cloudnine.png" width="100" height="20"/>
+                    <img src="~/Content/Images/Logos/logotyp_cloudnine.png" class="inverted" width="100" height="20"/>
                 </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse out" aria-expanded="true">
@@ -63,31 +65,33 @@
             </div><!--/.nav-collapse -->
         </div>
     </nav>
+    
+        <div class="centerContent hidden col-md-12">
+            @RenderBody()
 
-    <div class="centerContent hidden col-md-12">
-        @RenderBody()
-
-        <div id="goToTopp" class="animationExeption">
-            <a class="goToTopp animationExeption" href=""><img src="~/Content/Images/Icons/small-left-arrow-icon.png" width="100" height="50" /></a>
+            <div id="goToTopp" class="animationExeption">
+                <a class="goToTopp animationExeption" href=""><img src="~/Content/Images/Icons/small-left-arrow-icon.png" id="goToToppImage" width="100" height="50" /></a>
+            </div>
+            @*@Html.Partial("_Footer")*@
         </div>
-        @*@Html.Partial("_Footer")*@
-    </div>
-   
     <script src="~/Scripts/bootstrap.min.js"></script>
-
-    <script src="~/Scripts/CustomScripts/ColorScript.js"></script>
+    <script src="~/Scripts/CustomScripts/Animations.js"></script>
     <script src="~/Scripts/CustomScripts/BloggIndexAndSearch.js"></script>
     <script src="~/Scripts/CustomScripts/MenuAnimation.js"></script>
+  
 </body>
 </html>
 @{
+//todo: funktioner:
+//todo: color picker
+//todo: select logotype
+
 //todo: videojumbotron
 //todo: Gör editläget bättre
-//todo:-Meny /blogg sök och index 
+//todo: -Meny /blogg sök och index 
 //todo: -footer- gör socialMedia loggorna klara styla
+//todo: responsivt
 
-//todo: fadningar i caseImages
-//todo:-Meny gör den vit på sidor som inte är start
 //todo: styla formuläret
 //todo: fixa css.
 //todo: fixa metadata
