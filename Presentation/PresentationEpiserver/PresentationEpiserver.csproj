@@ -263,6 +263,8 @@
     <Compile Include="Classes\ImageFile.cs" />
     <Compile Include="Classes\CustomViewEngine.cs" />
     <Compile Include="Controllers\api\BloggsController.cs" />
+    <Compile Include="Controllers\FooterColumnBlockController.cs" />
+    <Compile Include="Controllers\FooterColumnTextBlockController.cs" />
     <Compile Include="Controllers\SmallBlogFeedController.cs" />
     <Compile Include="Helpers\MenuItem.cs" />
     <Compile Include="Classes\NumberOfCollumns.cs" />
@@ -308,6 +310,8 @@
     <Compile Include="Models\Blocks\CustomersBlock.cs" />
     <Compile Include="Models\Blocks\Event.cs" />
     <Compile Include="Models\Blocks\EventFeed.cs" />
+    <Compile Include="Models\Blocks\FooterColumnBlock.cs" />
+    <Compile Include="Models\Blocks\FooterColumnTextBlock.cs" />
     <Compile Include="Models\Blocks\FormArea.cs" />
     <Compile Include="Models\Blocks\FourColumnArticle.cs" />
     <Compile Include="Models\Blocks\FullColumnArticleBlock.cs" />
@@ -462,6 +466,8 @@
     <Content Include="Views\LinkButton\Index.cshtml" />
     <Content Include="Views\Blocks\LatestBLoggPosts\Index.cshtml" />
     <Content Include="Views\Blocks\SmallBlogFeed\Index.cshtml" />
+    <Content Include="Views\Blocks\FooterColumnTextBlock\Index.cshtml" />
+    <Content Include="Views\Blocks\FooterColumnBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

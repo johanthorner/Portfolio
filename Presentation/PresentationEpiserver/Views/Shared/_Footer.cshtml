@@ -9,32 +9,11 @@
 
 <footer class ="footer">
     <div class="row">
-      
-        <div class="col-md-2">
-            <p>
-                @Html.PropertyFor(m => startPage.AddressLineOne)
-            </p>
-        </div>
-        <div class="col-md-2">
-            <p>
-               @Html.PropertyFor(m => startPage.Mail)
-            </p>
-        </div>
-        <div class="col-md-2">
-            <p>
-              @Html.PropertyFor(m => startPage.ContactPhone)
-            </p>
-        </div>
-        <div class="col-md-2">
-            <p>
-                @Html.PropertyFor(m => startPage.AdditionalInfo)
-            </p>
-        </div>
-        <div class="col-md-2">
-            <p></p>
-        </div>
-        
+        <div class="col-lg-8 col-lg-offset-2 columns">
+            @Html.PropertyFor(m => startPage.FooterColumnArea, new { EditContainerClass = "overflow-hidden" })
+        </div>   
     </div>
+   
     <div class="row">
         <div class="socialMediaLogos">
             @if (Html.PropertyFor(m => startPage.TwitterLink) != null)
@@ -55,10 +34,7 @@
             }
         </div>
     </div>
-    <div class="col-md-2">
-        <p></p>
-    </div>
-    <div class="col-md-8">
+    <div class="col-lg-8 col-lg-offset-2">
         <p>
             Vi använder kakor (@Html.PageLink("Cookies", startPage.Legal)) för att förbättra din upplevelse av vår webbplats. Genom att surfa vidare accepterar du dessa kakor.
         </p>

@@ -4,6 +4,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
+using PresentationEpiserver.Models.Blocks;
 
 namespace PresentationEpiserver.Models.Pages
 {
@@ -148,5 +149,13 @@ namespace PresentationEpiserver.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 100)]
         public virtual PageReference Legal { get; set; }
+
+        [Display(
+          Name = "Footer Columns",
+          Description = "Place a column in the footer.",
+          GroupName = SystemTabNames.Content,
+          Order = 100)]
+        [AllowedTypes(new[] { typeof(FooterColumnBlock) })]
+        public virtual ContentArea FooterColumnArea { get; set; }
     }
 }

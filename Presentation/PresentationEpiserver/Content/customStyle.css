@@ -41,12 +41,6 @@ body .footer {
     padding-top: 40px;
 }
 body .CustomForm {
-     margin-top: calc(100% + 300px);
-     background: white !important;
-     position: absolute;
-     height: 300px;
-     right: 100px;
-     left: 100px;
      bottom: 0%;
      background-color: #efefef;
      text-align: center;
@@ -344,3 +338,4 @@ p {
        display: none;
    }
 
+.overflow-hidden { overflow:hidden !important }
