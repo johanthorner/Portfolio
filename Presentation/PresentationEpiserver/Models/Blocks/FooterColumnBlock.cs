@@ -16,7 +16,7 @@ namespace PresentationEpiserver.Models.Blocks
             Description = "Place the content of the column here",
             GroupName = SystemTabNames.Content,
             Order = 10)]
-        [AllowedTypes(new[] { typeof(FooterColumnTextBlock) })]
+        [AllowedTypes(new[] { typeof(FooterColumnTextBlock), typeof(FooterColumnLinkBlock) })]
         public virtual ContentArea Content { get; set; }
 
     }

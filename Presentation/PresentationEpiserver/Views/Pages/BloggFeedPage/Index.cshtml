@@ -1,7 +1,10 @@
-﻿@using EPiServer.Core
+﻿@using System.Text.RegularExpressions
+@using EPiServer.Core
 @using EPiServer.ServiceLocation
 @using EPiServer.Web.Mvc.Html
 @using EPiServer.Web.Routing
+@using PresentationEpiserver.Helpers
+
 @model PresentationEpiserver.Models.ViewModels.BloggListPageViewModel
 <div class="bloggIndex">
     
@@ -12,7 +15,9 @@
                     <li>Senaste blogginlägg</li>
                     @foreach (var blogg in Model.Bloggs)
                     {
-                        <li>@blogg.Header</li>
+                        string Header = @Regex.Replace(blogg.Header.ToString(), "<.*?>", String.Empty);
+                       
+                        <li><a href="@blogg.LinkURL">@Header</a></li>
                     }
                 </ul>
             </div>
@@ -21,7 +26,17 @@
                     <li>Månad</li>
                     @foreach (var blogg in Model.Bloggs)
                     {
-                        <li>@blogg.Changed.ToString("MMMM") @blogg.Changed.ToString("yyyy")</li>
+                        <li>
+                            @Ajax.ActionLink(
+                        linkText: blogg.Changed.ToString("MMMM"),
+                        actionName: "Index",
+                        controllerName: "BloggFeedPage",
+                        routeValues: new { month = blogg.Changed.Month },
+                        ajaxOptions: new AjaxOptions { },
+                        htmlAttributes: new { @class = "" })
+                        </li>
+
+                        @*<li>@blogg.Changed.ToString("MMMM") @blogg.Changed.ToString("yyyy")</li>*@
                     }
                 </ul>
             </div>
@@ -30,7 +45,7 @@
                     <li>kategori</li>
                     @foreach (var blogg in Model.Bloggs)
                     {
-                        <li>@blogg.</li>
+                        <li>@blogg.PageTypeName</li>
                     }
                 </ul>
             </div>

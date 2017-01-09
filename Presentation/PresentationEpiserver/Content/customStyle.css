@@ -5,17 +5,17 @@
 }
 
 .contentBox {
-    padding-bottom: 300px;
+    padding-bottom: 450px;
 }
 body {
     height:100%
 }
 
 body .footer {
-     margin-top: calc(100% + 300px);
+   
      background: black !important;
      position: absolute;
-     height: 300px;
+     height: 350px;
      right: 0;
      left: 0;
      bottom: 0%;
@@ -23,9 +23,13 @@ body .footer {
      text-align: center;
 
 }
+.li {
+   list-style-type: none;
+}
+
 .footer p {
     text-align: left;
-    padding-top: 30px;
+    padding-top: 5px;
     color: white;
 
 }
@@ -40,10 +44,14 @@ body .footer {
     padding-bottom: 40px;
     padding-top: 40px;
 }
+.footer .row {
+    padding-top: 30px;
+}
 body .CustomForm {
      bottom: 0%;
      background-color: #efefef;
      text-align: center;
+     padding-left: 50px;
 }
 
 .bloggPreviewImage {
@@ -54,7 +62,7 @@ body .CustomForm {
     background-color: grey;
 }
 .centerContent{
-    padding-bottom: 300px;
+    padding-bottom: 400px;
     padding-left: 0;
     padding-right: 0px;
 }
@@ -339,3 +347,4 @@ p {
    }
 
 .overflow-hidden { overflow:hidden !important }
+

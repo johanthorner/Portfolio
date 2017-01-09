@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using EPiServer;
 using EPiServer.Core;
@@ -88,6 +90,7 @@ namespace PresentationEpiserver.Helpers
             }
         
         }
+      
     }
 }
 

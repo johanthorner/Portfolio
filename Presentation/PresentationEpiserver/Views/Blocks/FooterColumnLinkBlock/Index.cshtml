@@ -1,0 +1,22 @@
+﻿@using EPiServer.Core
+@using EPiServer.Editor
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Blocks.FooterColumnLinkBlock
+
+@{
+    bool inEditMode = PageEditing.PageIsInEditMode;
+    if (!inEditMode)
+    {
+        <p>
+            <a href="@Html.PropertyFor(m => m.LinkUrl)">@Html.PropertyFor(m => m.LinkText)</a>
+        </p>
+    }
+    else
+    {
+        <p>
+            <a>@Html.PropertyFor(m => m.LinkText)</a>
+        </p>
+    }
+
+}

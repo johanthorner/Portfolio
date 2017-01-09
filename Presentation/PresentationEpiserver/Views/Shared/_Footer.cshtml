@@ -16,22 +16,30 @@
    
     <div class="row">
         <div class="socialMediaLogos">
-            @if (Html.PropertyFor(m => startPage.TwitterLink) != null)
-            {
-                <a href="@Html.PropertyFor(m => startPage.TwitterLink)"><img src="/Content/Images/socialMediaLogos/twitter.png" alt="Twitter logo" /></a>
+            @{
+                var twitterLink = startPage.GetPropertyValue(p => p.TwitterLink);
+                var facebookLink = startPage.GetPropertyValue(p => p.FacebookLink);
+                var linkedInLink = startPage.GetPropertyValue(p => p.LinkedInLink);
+                var instagramLink = startPage.GetPropertyValue(p => p.InstagramLink);
             }
-            @if (Html.PropertyFor(m => startPage.FacebookLink) != null)
+          
+            @if (!String.IsNullOrWhiteSpace(twitterLink))
             {
-                <a href="@Html.PropertyFor(m => startPage.FacebookLink)"><img src="/Content/Images/socialMediaLogos/facebook.png" alt="Facebook logo" /></a>
+                <a href="@Html.PropertyFor(m => startPage.TwitterLink)"><img src="/Content/Images/socialMediaLogos/twitter.png" alt="Twitter logo"/></a>
             }
-            @if (Html.PropertyFor(m => startPage.LinkedInLink) != null)
+            @if (!String.IsNullOrWhiteSpace(facebookLink))
             {
-                <a href="@Html.PropertyFor(m => startPage.LinkedInLink)"><img src="/Content/Images/socialMediaLogos/linkedin.png" alt="LikedIn logo" /></a>
+                <a href="@Html.PropertyFor(m => startPage.FacebookLink)"><img src="/Content/Images/socialMediaLogos/facebook.png" alt="Facebook logo"/></a>
             }
-            @if (Html.PropertyFor(m => startPage.InstagramLink) != null)
+            @if (!String.IsNullOrWhiteSpace(linkedInLink))
             {
-                <a href="@Html.PropertyFor(m => startPage.InstagramLink)"><img src="/Content/Images/socialMediaLogos/instagram.png" alt="Instagram logo" /></a>
+                <a href="@Html.PropertyFor(m => startPage.LinkedInLink)"><img src="/Content/Images/socialMediaLogos/linkedin.png" alt="LikedIn logo"/></a>
             }
+            @if (!String.IsNullOrWhiteSpace(instagramLink))
+            {
+                <a href="@Html.PropertyFor(m => startPage.InstagramLink)"><img src="/Content/Images/socialMediaLogos/instagram.png" alt="Instagram logo"/></a>
+            }
+            
         </div>
     </div>
     <div class="col-lg-8 col-lg-offset-2">

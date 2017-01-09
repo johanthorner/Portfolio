@@ -24,7 +24,7 @@ namespace PresentationEpiserver.Controllers
             _urlResolver = urlResolver;
         }
 
-        public ActionResult Index(BloggFeedPage currentPage, int p = 1, string searchString = "")
+        public ActionResult Index(BloggFeedPage currentPage, int p = 1, string searchString = "", int month = 13)
         {
             int pageSize = currentPage.NumberOfBloggsPerPage;
             var bloggs = _blogUtilities.GetAllBlogPages().ToList();
@@ -37,7 +37,7 @@ namespace PresentationEpiserver.Controllers
             {
                 sortedBloggs =
                     bloggs.Where(b => b.Text.ToString().Contains(searchString))
-                        .Skip((p - 1)*pageSize)
+                        .Skip((p - 1) * pageSize)
                         .Take(pageSize)
                         .ToList();
             }
@@ -46,7 +46,7 @@ namespace PresentationEpiserver.Controllers
                 sortedBloggs = bloggs.Skip((p - 1) * pageSize).Take(pageSize).ToList();
             }
             var paginationViewModel = new PaginationViewModel(p, pageSize, sortedBloggs.Count);
-            
+
             var model = new BloggListPageViewModel()
             {
                 Selected = p,
@@ -55,9 +55,9 @@ namespace PresentationEpiserver.Controllers
                 Bloggs = sortedBloggs,
                 PaginationViewModel = paginationViewModel,
                 UrlResolver = pageUrl,
-                ContentReference =  currentPage.ContentLink,
+                ContentReference = currentPage.ContentLink,
                 LastSearch = searchString,
-               
+
             };
             if (!searchString.IsNullOrEmpty())
             {
@@ -67,3 +67,19 @@ namespace PresentationEpiserver.Controllers
         }
     }
 }
+
+//if (month != 13)
+//{
+//    sortedBloggs = bloggs.Where(b => b.Changed.Month == month)
+//        .Skip((p - 1) * pageSize)
+//            .Take(pageSize)
+//            .ToList();
+//}
+//if (!searchString.IsNullOrEmpty())
+//{
+//    sortedBloggs =
+//        bloggs.Where(b => b.Text.ToString().ToLower().Contains(searchString.ToLower()) || b.Header.ToString().ToLower().Contains(searchString.ToLower()))
+//            .Skip((p - 1) * pageSize)
+//            .Take(pageSize)
+//            .ToList();
+//}
