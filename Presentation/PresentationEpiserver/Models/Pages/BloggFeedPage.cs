@@ -43,5 +43,21 @@ namespace PresentationEpiserver.Models.Pages
            Order = 30)]
         public virtual int NumberOfBloggsPerPage { get; set; }
 
+        [CultureSpecific]
+        [Display(
+          Name = "Search-box placeholder",
+          Description = "A text that will be displayed inside the searchbox",
+          GroupName = SystemTabNames.Content,
+          Order = 40)]
+        public virtual string SearchBoxPlaceHolder { get; set; }
+
+        [CultureSpecific]
+        [Display(
+         Name = "Search result text",
+         Description = "Search resulted in.",
+         GroupName = SystemTabNames.Content,
+         Order = 50)]
+        public virtual string SearchResultText { get; set; }
+
     }
 }

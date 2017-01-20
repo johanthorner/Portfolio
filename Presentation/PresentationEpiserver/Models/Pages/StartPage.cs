@@ -157,5 +157,13 @@ namespace PresentationEpiserver.Models.Pages
           Order = 100)]
         [AllowedTypes(new[] { typeof(FooterColumnBlock) })]
         public virtual ContentArea FooterColumnArea { get; set; }
+
+        [Display(
+         Name = "Social Media Area",
+         Description = "Place links to social in footer.",
+         GroupName = SystemTabNames.Content,
+         Order = 110)]
+        [AllowedTypes(new[] { typeof(SocialMediaLinkBlock) })]
+        public virtual ContentArea SocialMediaArea { get; set; }
     }
 }

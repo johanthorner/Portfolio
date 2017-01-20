@@ -1,103 +1,70 @@
 ﻿@using System.Text.RegularExpressions
-@using EPiServer.Core
-@using EPiServer.ServiceLocation
 @using EPiServer.Web.Mvc.Html
-@using EPiServer.Web.Routing
-@using PresentationEpiserver.Helpers
 
 @model PresentationEpiserver.Models.ViewModels.BloggListPageViewModel
-<div class="bloggIndex">
-    
-    @{
-        <div class="col-lg-6 col-lg-offset-2 bloggPreview">
-            <div class="col-lg-6">
-                <ul>
-                    <li>Senaste blogginlägg</li>
-                    @foreach (var blogg in Model.Bloggs)
-                    {
-                        string Header = @Regex.Replace(blogg.Header.ToString(), "<.*?>", String.Empty);
-                       
-                        <li><a href="@blogg.LinkURL">@Header</a></li>
-                    }
-                </ul>
-            </div>
-            <div class="col-lg-3">
-                <ul>
-                    <li>Månad</li>
-                    @foreach (var blogg in Model.Bloggs)
-                    {
-                        <li>
-                            @Ajax.ActionLink(
-                        linkText: blogg.Changed.ToString("MMMM"),
-                        actionName: "Index",
-                        controllerName: "BloggFeedPage",
-                        routeValues: new { month = blogg.Changed.Month },
-                        ajaxOptions: new AjaxOptions { },
-                        htmlAttributes: new { @class = "" })
-                        </li>
 
-                        @*<li>@blogg.Changed.ToString("MMMM") @blogg.Changed.ToString("yyyy")</li>*@
-                    }
-                </ul>
-            </div>
-            <div class="col-lg-3">
-                <ul>
-                    <li>kategori</li>
-                    @foreach (var blogg in Model.Bloggs)
-                    {
-                        <li>@blogg.PageTypeName</li>
-                    }
-                </ul>
-            </div>
-        </div>
-    }
+<div class="bloggIndex col-lg-8 col-lg-offset-2 ">
+    <ul id="years"></ul>
+    <ul id="blogs"></ul>
+   <span id="leftBtn" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+   <span id="rightBtn" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 </div>
-<div class="col-lg-6 col-lg-offset-2 bloggPreview bloggSearch">
-
 @{
-    using (Html.BeginForm("Index", "BloggFeedPage", FormMethod.Post))
+    string displaySearch = "";
+    if (Model.LastPostWasSearch)
     {
-        @Html.TextBox("searchString")
-        <input type="submit" />
+        displaySearch = "dispalySearch";
     }
-    <p>@Model.LastSearch</p>
 }
+<div id="searchWindow" class="col-lg-8 col-lg-offset-2 bloggPreview bloggSearch @displaySearch">
+    @{
+        using (Html.BeginForm("Index", "BloggFeedPage", FormMethod.Post))
+        {
+            string placeHolder = Model.SearchBoxPlaceHolder;
+            @Html.TextBox("searchString", null, new { @class = "searchInput", @placeholder = placeHolder })
+        }
+        if (Model.LastPostWasSearch)
+        {
+            <p class="serachResult">@Model.SearchResultText @Model.LastSearch</p>
+        }
+    }
 </div>
-
 @{
     var root = EPiServer.Web.SiteDefinition.Current.SiteUrl.AbsoluteUri.TrimEnd('/');
     foreach (var blogg in Model.Bloggs)
     {
-        <div class="col-lg-6 col-lg-offset-2 bloggPreview">
-            @Html.PropertyFor(m => blogg.Image, new { ImageWidth = "889", ImageHeight = "530", AdditionalCssClass = "bloggFeedImage" })
+        <div class="col-lg-8 col-lg-offset-2 bloggPreview">
+            @Html.PropertyFor(m => blogg.Image, new { ImageWidth = "1830", ImageHeight = "1080" })
             <p class="bloggDate">@blogg.Changed.ToString("%d") @blogg.Changed.ToString("MMMM") @blogg.Changed.ToString("yyyy")</p>
-            <h2>@blogg.Header</h2>
+            @{
+                string header = @Regex.Replace(blogg.Header.ToString(), "<.*?>", String.Empty);
+            }
+            <h2>@header</h2>
             <p class="bloggIngress">@blogg.ingress</p>
             <a href="@root@blogg.LinkURL" class="GoToBloggPostButton">@Model.ButtonText</a>
         </div>
-    }
-    <div class="col-md-2 col-md-offset-5 pageinationList">
-        <ul>
-            @for (int i = 1; i <= Model.PaginationViewModel.NumberOfPages; i++)
-            {
-                string cssClass = "";
-                if (Model.Selected == i )
-                {
-                    cssClass = "selected";
                 }
-                <li>
-                    @Ajax.ActionLink(
+                <div class="col-md-2 col-md-offset-5 pageinationList">
+                    <ul>
+                        @for (int i = 1; i <= Model.PaginationViewModel.NumberOfPages; i++)
+                        {
+                            string cssClass = "";
+                            if (Model.Selected == i)
+                            {
+                                cssClass = "selected";
+                            }
+                            <li>
+                                @Ajax.ActionLink(
                         linkText: i.ToString(),
                         actionName: "Index",
                         controllerName: "BloggFeedPage",
-                        routeValues: new { p = i },
+                        routeValues: new { p = i, searchString = Model.LastSearch, month = Model.Month },
                         ajaxOptions: new AjaxOptions { },
                         htmlAttributes: new { @class = cssClass })
-                </li>
-            } 
-        </ul>
-    </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
 }
-<div>
-   
-</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+<script src="~/Scripts/CustomScripts/BlogIndex.js"></script>

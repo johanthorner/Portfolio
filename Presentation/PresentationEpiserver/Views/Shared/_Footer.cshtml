@@ -1,51 +1,76 @@
 ﻿@using EPiServer
 @using EPiServer.Core
+@using EPiServer.Editor
 @using EPiServer.ServiceLocation
+@using PresentationEpiserver.Models.Blocks
 @using PresentationEpiserver.Models.Pages
 @{
     var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
     var startPage = contentLoader.Get<PresentationEpiserver.Models.Pages.StartPage>(ContentReference.StartPage);
 }
 
-<footer class ="footer">
+<footer class="footer">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 columns">
-            @Html.PropertyFor(m => startPage.FooterColumnArea, new { EditContainerClass = "overflow-hidden" })
-        </div>   
-    </div>
-   
-    <div class="row">
-        <div class="socialMediaLogos">
-            @{
-                var twitterLink = startPage.GetPropertyValue(p => p.TwitterLink);
-                var facebookLink = startPage.GetPropertyValue(p => p.FacebookLink);
-                var linkedInLink = startPage.GetPropertyValue(p => p.LinkedInLink);
-                var instagramLink = startPage.GetPropertyValue(p => p.InstagramLink);
-            }
-          
-            @if (!String.IsNullOrWhiteSpace(twitterLink))
+        <div class="container">
+            <div class="col-lg-8 col-centered">
+                @foreach (var item in startPage.FooterColumnArea.Items)
             {
-                <a href="@Html.PropertyFor(m => startPage.TwitterLink)"><img src="/Content/Images/socialMediaLogos/twitter.png" alt="Twitter logo"/></a>
-            }
-            @if (!String.IsNullOrWhiteSpace(facebookLink))
-            {
-                <a href="@Html.PropertyFor(m => startPage.FacebookLink)"><img src="/Content/Images/socialMediaLogos/facebook.png" alt="Facebook logo"/></a>
-            }
-            @if (!String.IsNullOrWhiteSpace(linkedInLink))
-            {
-                <a href="@Html.PropertyFor(m => startPage.LinkedInLink)"><img src="/Content/Images/socialMediaLogos/linkedin.png" alt="LikedIn logo"/></a>
-            }
-            @if (!String.IsNullOrWhiteSpace(instagramLink))
-            {
-                <a href="@Html.PropertyFor(m => startPage.InstagramLink)"><img src="/Content/Images/socialMediaLogos/instagram.png" alt="Instagram logo"/></a>
-            }
-            
+                var footerColumnBlock = ServiceLocator.Current.GetInstance<IContentRepository>().Get<FooterColumnBlock>(item.ContentGuid);
+                if (footerColumnBlock != null)
+                {
+                        <div class="center">
+                            <div class="col-lg-3">
+                                @foreach (var blockContent in footerColumnBlock.Content.Items)
+                                {
+                                    var footerColumnData = ServiceLocator.Current.GetInstance<IContentRepository>
+                                        ().Get<FooterColumnBaseBlock>
+                                        (blockContent.ContentGuid);
+                                    if (footerColumnData == null)
+                                    {
+                                        continue;
+                                    }
+
+                                    if (footerColumnData is FooterColumnLinkBlock)
+                                    {
+                                        FooterColumnLinkBlock linkBlock = (FooterColumnLinkBlock)footerColumnData;
+
+                                        foreach (var link in linkBlock.Links)
+                                        {
+                                            <p>
+                                                <a target="@link.Target" href="@Url.PageUrl(link.Href)">@link.Text</a>
+                                            </p>
+                                        }
+                                    }
+                                    if (footerColumnData is FooterColumnTextBlock)
+                                    {
+                                        FooterColumnTextBlock textBlock = (FooterColumnTextBlock)footerColumnData;
+                                        <p>@textBlock.Text</p>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
         </div>
     </div>
-    <div class="col-lg-8 col-lg-offset-2">
+    <div class="container">
+        <div class="col-lg-4 col-centered">
+            <div class="center">
+                @{
+                    foreach (var item in startPage.SocialMediaArea.Items)
+                    {
+                        var block = ServiceLocator.Current.GetInstance<IContentRepository>().Get<SocialMediaLinkBlock>(item.ContentGuid);
+                        <a target="@Url.PageUrl(block.Link[0].Href)" href="@Url.PageUrl(block.Link[0].Href)">@Html.PropertyFor(m => block.SocialMediaLogo)</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="cookiesInfomation col-lg-8 col-lg-offset-2 col-md-12 col-sm-12">
         <p>
             Vi använder kakor (@Html.PageLink("Cookies", startPage.Legal)) för att förbättra din upplevelse av vår webbplats. Genom att surfa vidare accepterar du dessa kakor.
         </p>
     </div>
-    
+
 </footer>

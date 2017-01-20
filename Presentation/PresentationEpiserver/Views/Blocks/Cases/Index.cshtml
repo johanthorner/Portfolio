@@ -1,148 +1,62 @@
-﻿
-@using Castle.Core.Internal
-
+﻿@using Castle.Core.Internal
 @using EPiServer.Web.Mvc.Html
-
 @using PresentationEpiserver.Helpers
 
 @model PresentationEpiserver.Models.Blocks.Cases
 
-<div>
-    @Html.PropertyFor(m => m.Header)
-</div>
-<div class="cases">
-    @Html.PropertyFor(m => m.Text)
-</div>
-<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
-    @{
-        int blockId = 0;
-        foreach (var item in Html.GetCasePages())
-        {
-            blockId++;
-            <div id="mycarousel" class="carousel slide @item.NumberOfColumns" data-ride="carousel">
-                <div class="item active casePresentaiton">
-                    <div class="carousel-inner">
-                        @{
-                            string colorClass = "";
-                            if (item.TextBackgroundColor.IsNullOrEmpty())
-                            {
-                                colorClass = "fallbackColor";
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+        <div class="cases">
+            <h2>@Html.PropertyFor(m => m.Header)</h2>
+            <p>@Html.PropertyFor(m => m.Text)</p>
+        </div>
+        @{
+            foreach (var casePage in Html.GetCasePages())
+            {
+                <div id="mycarousel" class="carousel slide @casePage.NumberOfColumns" data-ride="carousel">
+                    <div class="item active casePresentaiton">
+                        <div class="carousel-inner">
+                            @{
+                                string colorClass = "";
+                                if (casePage.TextBackgroundColor.IsNullOrEmpty())
+                                {
+                                    colorClass = "#00ff00";
+                                }
+                                else
+                                {
+                                    colorClass = casePage.TextBackgroundColor;
+                                }
 
+                                string tintTransparency = "";
+                                if (casePage.TintTransparency.IsNullOrEmpty())
+                                {
+                                    tintTransparency = "0.3";
+                                }
+                                else
+                                {
+                                    tintTransparency = casePage.TintTransparency;
+                                }
                             }
-                            else
-                            {
-
-                                colorClass = item.TextBackgroundColor;
-                            }
-                        }
-                        <div class="carousel-item" data-color="@colorClass">
-
-                            @Html.PropertyFor(m => item.CaseThumbnail, new { })
-                            <div class="carousel-caption">
-                                <h3>@item.TextForBlock</h3>
+                            <div class="carousel-item" data-color="@colorClass" data-Transparency ="@tintTransparency">
+                                @{
+                                    if (casePage.NumberOfColumns == "col-lg-6 col-md-12 col-sm-12")
+                                    {
+                                        @Html.PropertyFor(m => casePage.CaseThumbnail, new { ImageWidth = "", ImageHeight = "" })
+                                    }
+                                    else
+                                    {
+                                        @Html.PropertyFor(m => casePage.CaseThumbnail, new { ImageWidth = "370", ImageHeight = "485" })
+                                    }
+                                }
+                                <div class="carousel-caption">
+                                    <h3>@casePage.TextForBlock</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-                            }
-    }
-</div>
-<script>
-    $(document)
-        .ready(function () {
-
-            function hexToRgb(hex) {
-                var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-                return result ? {
-                    r: parseInt(result[1], 16),
-                    g: parseInt(result[2], 16),
-                    b: parseInt(result[3], 16)
-                } : null;
-            }
-
-
-            $('.carousel-item')
-                .each(function (index, item) {
-                    var colorValue = hexToRgb($(item).data('color'));
-                    console.log(colorValue);
-                  
-                    console.log(item);
-                    $(item).addClass('tint');
-
-                    $(item)
-                        .mouseenter(function () {
-                            
-                            var css = '.tint:hover:before {background: rgba(' + colorValue.r + ',' + colorValue.g +',' +colorValue.b +  ', 0.3);}',
-                            head = document.head || document.getElementsByTagName('head')[0],
-                            style = document.createElement('style');
-
-                            style.type = 'text/css';
-                            if (style.styleSheet) {
-                                style.styleSheet.cssText = css;
-                            } else {
-                                style.appendChild(document.createTextNode(css));
-                            }
-                            head.appendChild(style);
-
-                            $(item).addClass('tint:hover:before');
-                            console.log('hello');
-                        }).mouseleave(function () {
-                            console.log('world');
-                        });
-                });
-        });
-</script>
-
-<style>
-    .caseImage {
-        display: block;
-        z-index: -1;
-        margin-bottom: 100px;
-        position: relative;
-    }
-
-    .tint {
-        position: relative;
-        float: left;
-        margin-right: 20px;
-        margin-bottom: 20px;
-        cursor: pointer;
-    }
-
-        .tint:before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            bottom: 30px;
-            left: 0;
-            right: 0;
-            transition: all .3s linear;
-            background: none;
+                                    }
         }
-
-    /*.tint:hover:before {
-        background: rgba(0,255,255, 0.5);
-    }
-
-    .fallbackColor:hover:before {
-        background: rgba(0,0,255, 0.5);
-    }*/
-
-    /*.green:hover:before {
-        background: #00ff00;
-    }
-
-    .t4:before {
-        background: rgba(0,255,0, 0.5);
-    }
-
-    .t5:before {
-        background: rgba(255,0,240, 0.5);
-    }
-
-    .t6:before {
-        background: rgba(255,102,0, 0.6);
-    }*/
-</style>
+    </div>
+</div>
+<script src="~/Scripts/CustomScripts/CasesThumbnailColorTint.js"></script>

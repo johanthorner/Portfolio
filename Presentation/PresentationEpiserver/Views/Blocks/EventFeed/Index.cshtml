@@ -1,4 +1,5 @@
-﻿@using EPiServer
+﻿@using Castle.Core.Internal
+@using EPiServer
 @using EPiServer.Core
 @using EPiServer.ServiceLocation
 @using EPiServer.Web.Mvc.Html
@@ -28,8 +29,11 @@
 }
 <div class="col-lg-12">
     @{
-        <h1>@Html.PropertyFor(m => Model.HeaderComingEvents)</h1>
         var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+
+        List<EPiServer.Core.ContentAreaItem> earlierEvents = new List<ContentAreaItem>();
+        List<EPiServer.Core.ContentAreaItem> comingEvents = new List<ContentAreaItem>();
+
         if (Model.Events != null && Model.Events.Items.Any())
         {
             foreach (var contentItem in Model.Events.Items)
@@ -37,17 +41,33 @@
                 var item = contentLoader.Get<Event>(contentItem.ContentLink);
                 if (item.DateAndTime >= DateTime.Now)
                 {
-                    @DisplayEvent(item, true)
+                    comingEvents.Add(contentItem);
+                }
+                else
+                {
+                    earlierEvents.Add(contentItem);
                 }
             }
-            <h1>@Html.PropertyFor(m => Model.HeaderPastEvents)</h1>
-            foreach (var contentItem in Model.Events.Items)
+
+            if (!comingEvents.IsNullOrEmpty())
+            {
+                <h2>@Model.HeaderComingEvents</h2>
+            }
+
+            foreach (var contentItem in comingEvents)
             {
                 var item = contentLoader.Get<Event>(contentItem.ContentLink);
-                if (item.DateAndTime <= DateTime.Now)
-                {
-                    @DisplayEvent(item, false)
-                }
+                @DisplayEvent(item, true)
+            }
+
+            if (!earlierEvents.IsNullOrEmpty())
+            {
+                <h2>@Model.HeaderPastEvents</h2>
+            }
+            foreach (var contentItem in earlierEvents)
+            {
+                var item = contentLoader.Get<Event>(contentItem.ContentLink);
+                @DisplayEvent(item, false)
             }
 
         }

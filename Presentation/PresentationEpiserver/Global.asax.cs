@@ -27,8 +27,9 @@ namespace PresentationEpiserver
 
             RouteTable.Routes.MapHttpRoute(
                 name: "API Default",
-                routeTemplate: "api/{controller}/{lang}/{numberOfArticles}",
+                routeTemplate: "api/{controller}/{action}/{lang}/{numberOfArticles}",
                 defaults: new { id = System.Web.Http.RouteParameter.Optional });
+            
 
         }
     }

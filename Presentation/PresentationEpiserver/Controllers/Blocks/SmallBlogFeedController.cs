@@ -11,9 +11,9 @@ using PresentationEpiserver.Models.Blocks;
 
 namespace PresentationEpiserver.Controllers
 {
-    public class ShopBlockController : BlockController<ShopBlock>
+    public class SmallBlogFeedController : BlockController<SmallBlogFeed>
     {
-        public override ActionResult Index(ShopBlock currentBlock)
+        public override ActionResult Index(SmallBlogFeed currentBlock)
         {
             return PartialView(currentBlock);
         }

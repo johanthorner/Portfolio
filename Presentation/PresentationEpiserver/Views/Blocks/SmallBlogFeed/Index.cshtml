@@ -8,25 +8,5 @@
     <h2>@Html.PropertyFor(m => m.Header)</h2>
     <div id="latestNews" class="col-lg-10 col-lg-offset-1"></div>
 </div>
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
-<script type="text/javascript">
-
-    
-
-    var uri = '/api/bloggs/en/4';
-
-    $(document).ready(function () {
-        $.getJSON(uri)
-              .done(function (data) {
-                  $.each(data, function (key, item) {
-                      $('#latestNews')
-                          .append($('<div class="col-lg-3 col-md-3 col-sm-12 smallNewsFeedDiv">')
-                          .append($('<img src="' + item.ImageUrl + '" class="img-responsive">'))
-                          .append("<h4><a href='" + item.BloggPageUrl + "'>" + item.Header + "</a></h4>")
-                          .append("<p>" + item.Ingress + "</p></div>"));
-                  });
-              });
-    });
-
-</script>
+<script src="~/Scripts/CustomScripts/SmallBlogFeedApiConnection.js"></script>

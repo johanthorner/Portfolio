@@ -6,7 +6,7 @@ using EPiServer.Shell.ObjectEditing.EditorDescriptors;
 
 namespace PresentationEpiserver.Classes
 {
-    public class NumberOfCollumns : ISelectionFactory
+    public class ImageTintTransparencySelection : ISelectionFactory
     {
         public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
         {
@@ -16,15 +16,17 @@ namespace PresentationEpiserver.Classes
         {
             var items = new Dictionary<string, string>
             {
-                {"col-lg-4 col-md-6 col-sm-12", "1/3"},
-                {"col-lg-6 col-md-12 col-sm-12", "1/2"},
-                {"col-lg-12 col-md-12 col-sm-12", "1"}
+                {"0", "100%"},
+                {"0.2", "75%"},
+                {"0.5", "50%"},
+                {"0.7", "25%"},
+                {"1", "0%"}
             };
             return items.Select(item => new SelectItem { Text = item.Value, Value = item.Key });
         }
     }
-    [EditorDescriptorRegistration(TargetType = typeof(string), UIHint = "NumberOfCollumns")]
-    public class ImageHeightSelectionEditorSelector : EditorDescriptor
+    [EditorDescriptorRegistration(TargetType = typeof(string), UIHint = "ImageTransparency")]
+    public class ImageTintTransparencySelectionEditorSelector : EditorDescriptor
     {
         public override void ModifyMetadata(ExtendedMetadata metadata, IEnumerable<Attribute> attributes)
         {

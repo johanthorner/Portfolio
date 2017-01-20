@@ -3,7 +3,7 @@
 
 @model PresentationEpiserver.Models.Blocks.FullColumnArticleBlock
 <div class="col-lg-8 col-lg-offset-2 article">
-    @Html.PropertyFor(m => Model.Image, new { ImageCssClass = "col-md-12" })
+    @Html.PropertyFor(m => Model.Image)
 
     <div class="col-lg-8 col-lg-offset-2">
         <h2>@Html.PropertyFor(m => m.Header)</h2>

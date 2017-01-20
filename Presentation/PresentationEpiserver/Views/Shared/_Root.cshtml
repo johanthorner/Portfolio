@@ -1,7 +1,4 @@
-﻿@using EPiServer
-@using EPiServer.Core
-@using EPiServer.ServiceLocation
-@using PresentationEpiserver.Helpers
+﻿@using PresentationEpiserver.Helpers
 @using EPiServer.Web.Mvc.Html
 
 <!DOCTYPE html>
@@ -36,66 +33,60 @@
                     }
                     @foreach (var item in Html.GetMenuItems())
                     {
-                        string cssString = "nav-item ";
+                        string cssString = "nav-link ";
 
                         if (item.IsBloggPage)
                         {
-                            cssString += "bloggPageLink ";
+                           // cssString += "bloggPageLink ";
                         }
                         if (item.Active)
                         {
-                            cssString += "active-link";
+                            cssString += "active";
                         }
                         if (item.Active && item.IsBloggPage)
                         {
                             displayBloggIcons = true;
                         }
-                        <li class="@cssString">
-                            @Html.ContentLink(item.SitePageData.ContentLink)
+                        <li class="nav-item">
+                            @Html.PageLink(item.SitePageData.PageLink, null, new { @class = cssString })
                         </li>
                     }
                     @{
                         if (displayBloggIcons)
                         {
-                            <li><a id="displayIndex" class="animationExeption" href="">INDEX</a></li>
-                            <li><a id="displaySearch" class="animationExeption" href="">SÖK</a></li>
+                            <li><a id="displayIndex" class="animationExeption" href=""><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></li>
+                            <li><a id="displaySearch" class="animationExeption" href=""><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
                         }
                     }
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
         </div>
     </nav>
-    
         <div class="centerContent hidden col-md-12">
             @RenderBody()
-
             <div id="goToTopp" class="animationExeption">
                 <a class="goToTopp animationExeption" href=""><img src="~/Content/Images/Icons/small-left-arrow-icon.png" id="goToToppImage" width="100" height="50" /></a>
             </div>
             @Html.Partial("_Footer")
         </div>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/CustomScripts/Animations.js"></script>
-    <script src="~/Scripts/CustomScripts/BloggIndexAndSearch.js"></script>
+    <script src="~/Scripts/CustomScripts/BloggIndexAndSearchAnimation.js"></script>
     <script src="~/Scripts/CustomScripts/MenuAnimation.js"></script>
   
 </body>
 </html>
 @{
 //todo: funktioner:
-//todo: select logotype
-//todo: -Meny /blogg sök och index 
+//todo: fredag index
 
-
-//todo: videojumbotron
-//todo: Gör editläget bättre
-//todo: -footer- fixa felet
 //todo: responsivt
-
 //todo: styla formuläret
 //todo: fixa metadata
 
 //todo:Senare saker
+//todo: video eller-jumbotron förstasidan
 //todo: facebook delning
-
+//todo: select logotype
+//todo: small newsfeed gör bilderna lika stora
+//todo: gör active link
 }

@@ -16,5 +16,8 @@ namespace PresentationEpiserver.Models
         public CultureInfo CultureInfo { get; set; }
         public string ImageUrl { get; set; }
         public string BloggPageUrl { get; set; }
+
+        public DateTime Changed { get; set; }
+
     }
 }
