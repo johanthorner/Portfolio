@@ -103,7 +103,12 @@ p {
 }
 
 .cases p {
+
     text-align: center;
+}
+.cases {
+    padding-bottom: 60px;
+    padding-top: 60px;
 }
 
 .CustomForm button {
@@ -552,9 +557,9 @@ p {
 
 hr.style-one {
     border: 0;
-    height: 1px;
+    height: 3px;
     background: #333;
-    background-image: linear-gradient(to right, #65e51d, #dd58e0, #edff19);
+    background-image: linear-gradient(to right, #000000, #b5b5b5, #000000);
 }
 
 #latestNews {
@@ -576,4 +581,8 @@ hr.style-one {
 }
 .smallBloggFeedImage {
     z-index: -1;
+}
+.spacer {
+    margin-top: 100px;
+    margin-bottom: 100px;
 }

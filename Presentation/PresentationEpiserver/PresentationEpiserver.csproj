@@ -271,6 +271,7 @@
     <Compile Include="Controllers\Blocks\FooterColumnTextBlockController.cs" />
     <Compile Include="Controllers\Blocks\SmallBlogFeedController.cs" />
     <Compile Include="Controllers\Blocks\SocialMediaLinkBlockController.cs" />
+    <Compile Include="Controllers\Blocks\SpacerBlockController.cs" />
     <Compile Include="Controllers\Blocks\VideoBlockController.cs" />
     <Compile Include="Helpers\MenuItem.cs" />
     <Compile Include="Classes\NumberOfCollumns.cs" />
@@ -336,6 +337,7 @@
     <Compile Include="Models\Blocks\SelectSubCategoryEditorSelector.cs" />
     <Compile Include="Models\Blocks\SmallBlogFeed.cs" />
     <Compile Include="Models\Blocks\SocialMediaLinkBlock.cs" />
+    <Compile Include="Models\Blocks\SpacerBlock.cs" />
     <Compile Include="Models\Blocks\SubCategoryBlock.cs" />
     <Compile Include="Models\Blocks\SubmitContactInformationBlock.cs" />
     <Compile Include="Models\Blocks\TextBlockBig.cs" />
@@ -478,6 +480,7 @@
     <Content Include="Views\Blocks\SocialMediaLinkBlock\Index.cshtml" />
     <Content Include="Views\Blocks\VideoBlock\Index.cshtml" />
     <Content Include="Views\Blocks\BloggIndexBlock\Index.cshtml" />
+    <Content Include="Views\Blocks\SpacerBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
