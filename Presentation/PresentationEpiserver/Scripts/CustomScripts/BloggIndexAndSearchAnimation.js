@@ -13,7 +13,7 @@
     $("#displaySearch").click(function (e) {
         e.preventDefault();
         e.stopPropagation();
-        $(".bloggSearch").toggle();
+        $(".bloggSearch").fadeToggle("slow");
         $(".bloggIndex").hidden();
     });
     $(".goToTopp").click(function (e) {

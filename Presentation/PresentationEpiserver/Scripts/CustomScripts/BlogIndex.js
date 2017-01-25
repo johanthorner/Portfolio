@@ -6,7 +6,7 @@ $(document).ready(function () {
           .done(function (data) {
               $.each(data, function (key, item) {
                   $.each(item, function (key, item) {
-                      $("#years").append('<li data-year = "' + item.Year + '" class="yearLink"><h3>' + item.Year + '</h3></li>');
+                      $("#years").append('<li data-year = "' + item.Year + '" class="yearLink"><p>' + item.Year + '</p>');
                       $.each(item.Bloggs, function (key, item) {
                           $("#blogs").append('<li class="blogItem ' + item.Year + '" data-p = "1" style="display: none"><a href="' + item.BlogUrl + '">' + item.Header + '</a></li>');
                       });
@@ -17,31 +17,38 @@ $(document).ready(function () {
 });
 
 function displayIndex() {
+
     var itemsPerPage = 2;
     var filteredItems = "";
     var numberOfPages = 1;
     var numberOfItems = 3;
     var p = 0;
-    var curentYear = 0;
+    var selectedYear = 0;
+    var pageInfo = "";
+
+    $("#numberOfItemsPerPageSelection")
+        .change(function() {
+            var item = $(this);
+            itemsPerPage = item.val();
+            displayMenu(itemsPerPage, p, selectedYear);
+        });
 
     $(".yearLink").click(function () {
-        curentYear = $(this).data("year");
-        displayMenu(itemsPerPage, p, curentYear);
+        selectedYear = $(this).data("year");
+        displayMenu(itemsPerPage, p, selectedYear);
     });
 
     $("#leftBtn").click(function () {
         if (p > 0) {
             p--;
-            console.log(p);
-            displayMenu(itemsPerPage, p, curentYear);
+            displayMenu(itemsPerPage, p, selectedYear);
         }
     });
 
     $("#rightBtn").click(function () {
         if (p < numberOfPages - 1) {
             p++;
-            console.log(p);
-            displayMenu(itemsPerPage, p, curentYear);
+            displayMenu(itemsPerPage, p, selectedYear);
         }
     });
 
@@ -63,6 +70,7 @@ function displayIndex() {
         var itemsToDisplay = filteredItems.filter("[data-p~='" + p + "']");
         itemsToDisplay.toggle();
 
+       $("#pageInformation").html( pageInfo = ++p + "/" + numberOfPages);
     }
 }
 

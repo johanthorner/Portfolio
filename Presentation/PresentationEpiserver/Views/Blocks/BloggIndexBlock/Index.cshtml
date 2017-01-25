@@ -1,0 +1,49 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model PresentationEpiserver.Models.Blocks.BloggIndexBlock
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <h1>React Index</h1>
+        <div id="react-app"></div>
+
+    </div>
+    <div style="height: 400px"></div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react.js"></script>
+<script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js"></script>
+
+<script type="text/javascript">
+
+    var uri = '/api/bloggs/Menu/en/100';
+
+    $(document).ready(function () {
+        var years = [];
+        $.getJSON(uri)
+              .done(function (data) {
+                  $.each(data, function (key, item) {
+                      $.each(item, function (key, item) {
+                          years.push(item);
+                      });
+                  });
+                  printMenu(years);
+              });
+
+
+        function printMenu(years) {
+
+            //var id = "johan";
+            //var rootElement =
+            //           React.createElement('div', {},
+            //           React.createElement('ul',{}, 
+            //           React.createElement('li', { className: 'listItem' })));
+
+         
+
+            ReactDOM.render(rootElement, document.getElementById('react-app'));
+        }
+    });
+</script>

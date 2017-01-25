@@ -3,11 +3,40 @@
 
 @model PresentationEpiserver.Models.ViewModels.BloggListPageViewModel
 
+
 <div class="bloggIndex col-lg-8 col-lg-offset-2 ">
-    <ul id="years"></ul>
-    <ul id="blogs"></ul>
-   <span id="leftBtn" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-   <span id="rightBtn" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <h2>Index</h2>
+  
+    <div class="row indexBox">
+        <div class="col-lg-4">
+            <ul id="years"></ul>
+        </div>
+        <div class="col-lg-8">
+            <ul id="blogs"></ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 indexFunctions">
+            <div class="col-lg-4 ">
+                <p>
+                    Items per page
+                    <select id="numberOfItemsPerPageSelection">
+                        <option>2</option>
+                        <option>4</option>
+                        <option>6</option>
+                    </select>
+                </p>
+            </div>
+            <div class="col-lg-3 col-lg-offset-5 ">
+                <span id="leftBtn" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span id="pageInformation"></span>
+                <span id="rightBtn" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line col-lg-12"></div>
+    </div>
 </div>
 @{
     string displaySearch = "";
@@ -18,7 +47,7 @@
 }
 <div id="searchWindow" class="col-lg-8 col-lg-offset-2 bloggPreview bloggSearch @displaySearch">
     @{
-        using (Html.BeginForm("Index", "BloggFeedPage", FormMethod.Post))
+        using (Html.BeginForm("Index", "BloggFeedPage" , FormMethod.Get))
         {
             string placeHolder = Model.SearchBoxPlaceHolder;
             @Html.TextBox("searchString", null, new { @class = "searchInput", @placeholder = placeHolder })

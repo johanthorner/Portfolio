@@ -264,6 +264,7 @@
     <Compile Include="Classes\CustomViewEngine.cs" />
     <Compile Include="Classes\ImageTintTransparencySelection.cs" />
     <Compile Include="Controllers\api\BloggsController.cs" />
+    <Compile Include="Controllers\Blocks\BloggIndexBlockController.cs" />
     <Compile Include="Controllers\Blocks\CustomerController.cs" />
     <Compile Include="Controllers\Blocks\FooterColumnBlockController.cs" />
     <Compile Include="Controllers\Blocks\FooterColumnLinkBlockController.cs" />
@@ -305,6 +306,7 @@
     <Compile Include="Groups\GroupNames.cs" />
     <Compile Include="Helpers\ViewHelpers.cs" />
     <Compile Include="Models\Blocks\BloggBlock.cs" />
+    <Compile Include="Models\Blocks\BloggIndexBlock.cs" />
     <Compile Include="Models\Blocks\Cases.cs" />
     <Compile Include="Models\Blocks\CasesBlock.cs" />
     <Compile Include="Models\Blocks\Contact.cs" />
@@ -410,6 +412,7 @@
     <Content Include="fonts\vjs.ttf" />
     <Content Include="fonts\vjs.eot" />
     <Content Include="Content\video-js.less" />
+    <Content Include="Scripts\CustomScripts\jsx1.jsx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\CustomScripts\SmallBlogFeedApiConnection.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -474,6 +477,7 @@
     <Content Include="Views\Blocks\FooterColumnLinkBlock\Index.cshtml" />
     <Content Include="Views\Blocks\SocialMediaLinkBlock\Index.cshtml" />
     <Content Include="Views\Blocks\VideoBlock\Index.cshtml" />
+    <Content Include="Views\Blocks\BloggIndexBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
